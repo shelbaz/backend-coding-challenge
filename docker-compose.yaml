@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=cities  
+  
+  app:
+    build: ./
+    image: app
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+      - "5432"
+
+      

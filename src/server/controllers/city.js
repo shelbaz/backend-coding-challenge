@@ -1,18 +1,18 @@
-import model from '../models';
-
-const { City } = model;
+import sequelize from 'sequelize';
+const City = sequelize.import('../models/cities');
 
 class Cities {
-  static create(req, res) {
-    const { name, country_code, admin1_code, longitude, latitude } = req.body
-    const { userId } = req.params
-    return City
+  static async Create(req, res) {
+    const { name, country, admin1, longitude, latitude, population } = req.body
+    console.log(req.body);
+    return await City
       .create({
         name,
-        country_code,
-        admin1_code,
+        country,
+        admin1,
         longitude,
-        latitude
+        latitude,
+        population
       })
       .then(city => res.status(201).send({
         message: `Your city ${name} has been created successfully `,
