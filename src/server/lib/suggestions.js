@@ -9,8 +9,9 @@ function getSuggestionScore(c1_latitude, c1_longtitude){
 
     let distanceScore = distanceWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));
     let populationScore = populationWeight * getPopulationPercentage(population, country, TOTAL_POPULATION);
-    let apiScore = getGoogleMapsCentainty(c1_latitude, c1_longtitude);
-    let totalScore = distanceScore + populationScore + apiScore; 
+    let apiScore = getGoogleMapsCertainty(c1_latitude, c1_longtitude);
+    let totalScore = distanceScore + populationScore + apiScore;
+    return totalScore; 
 }
 
 function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitude){
@@ -37,7 +38,7 @@ function getPopulationPercentage(population, country, TOTAL_POPULATION){
             }
 }
 
-function getGoogleMapsCentainty(c1_latitude, c1_longtitude){
+function getGoogleMapsCertainty(c1_latitude, c1_longtitude){
     
     var url = 'https://geocode.xyz/LAT,LONG?geoit=xml';
     url = url.replace('LAT', c1_latitude);

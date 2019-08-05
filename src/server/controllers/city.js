@@ -3,6 +3,7 @@ const City = db.sequelize.import('cities', require('../models/cities'));
 
 
 class Cities {
+  
   static async create(req, res) {
     const { name, country, admin1, longitude, latitude, population } = req.body
     return await City
@@ -17,6 +18,33 @@ class Cities {
       .then(city => res.status(201).send({
         message: `Your city ${name} has been created successfully `
       }))
+    }
+
+    static async getSome(req, res){
+      return await City.findAll({attributes: { include: req.body.arr }}) 
+    }
+
+    static async getAll(req, res){
+      return await City.findAll({});
+    }
+
+    static async getMatches(req, res){
+      let lookupValue = req.body.query.toLowerCase();
+
+      City.findAll({
+          attributes: {include: ['name', 'country', 'longitude', 'latitude']},
+          limit: 5,
+          where: {
+              asset_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('asset_name')), 'LIKE', '%' + lookupValue + '%')
+          }
+      }).then(function(assets){
+          return response.json({
+              msg: '** Matches **',
+              assets: assets
+          });
+      }).catch(function(error){
+          console.log(error);
+      });
     }
 }
 
