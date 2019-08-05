@@ -1,10 +1,10 @@
-import sequelize from 'sequelize';
-const City = sequelize.import('../models/cities');
+var db = require('../models/index');
+const City = db.sequelize.import('cities', require('../models/cities'));
+
 
 class Cities {
-  static async Create(req, res) {
+  static async create(req, res) {
     const { name, country, admin1, longitude, latitude, population } = req.body
-    console.log(req.body);
     return await City
       .create({
         name,
@@ -15,8 +15,7 @@ class Cities {
         population
       })
       .then(city => res.status(201).send({
-        message: `Your city ${name} has been created successfully `,
-        book
+        message: `Your city ${name} has been created successfully `
       }))
     }
 }
@@ -36,6 +35,7 @@ function adminCodeToZip(adminCode){
         case '12': return 'YT';
         case '13': return 'NT';
         case '14': return 'NU';
+        default: return adminCode;
     }
 }
 

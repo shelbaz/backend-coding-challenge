@@ -1,17 +1,20 @@
 import fs from 'fs';
 import csv from 'csv';
-const Sequelize = require('sequelize');
 var adminCodeToZip = require('../controllers/city.js').adminCodeToZip;
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
-var model = sequelize['import']('../models/cities');
+var db = require('../models/');
+const City = db.sequelize.import('cities', require('../models/cities'));
 
-var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');
-var parser = csv.parse({
-    delimiter: '\t',
-    columns: true
-})
 
+export default function seed(){
+    var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');
+    var parser = csv.parse({
+        delimiter: '\t',
+        columns: true,
+        skip_lines_with_error: true  
+    })  
+var count = 0;
 var transform = csv.transform(function(row) {
+    count++;
     var resultObj = {
         name: row['name'],
         country: row['country'],
@@ -20,14 +23,16 @@ var transform = csv.transform(function(row) {
         latitude: row['lat'],
         population: row['population'],
     }
-    console.log(resultObj);
-    model.create(resultObj)
+
+    City.create(resultObj)
         .then(function() {
-            console.log('Record created')
         })
         .catch(function(err) {
             console.log('Error encountered: ' + err)
         })
 })
+console.log('Number of records created: ' + count);
 
 input.pipe(parser).pipe(transform)
+}
+
