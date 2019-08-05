@@ -1,7 +1,7 @@
 import routes from './server/routes';
 import express from "express";
 import http from "http";
-import logger from "morgan";
+// import logger from "morgan";
 import bodyParser from "body-parser";
 import 'babel-polyfill';
 var models = require("../src/server/models");
@@ -12,7 +12,7 @@ const port = 3000;
 const app = express(); // setup express application
 const server = http.createServer(app);
 
-app.use(logger('dev')); // log requests to the console
+// app.use(logger('dev')); // log requests to the console
 
 // Parse incoming requests data
 app.use(bodyParser.json());

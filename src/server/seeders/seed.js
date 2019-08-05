@@ -10,11 +10,12 @@ export default function seed(){
     var parser = csv.parse({
         delimiter: '\t',
         columns: true,
-        skip_lines_with_error: true  
+        skip_lines_with_error: true,
+        relax_column_count: true  
     })  
 var count = 0;
 var transform = csv.transform(function(row) {
-    count++;
+    
     var resultObj = {
         name: row['name'],
         country: row['country'],
@@ -26,12 +27,13 @@ var transform = csv.transform(function(row) {
 
     City.create(resultObj)
         .then(function() {
+            // console.log(JSON.stringify(resultObj));
         })
         .catch(function(err) {
             console.log('Error encountered: ' + err)
         })
-})
-console.log('Number of records created: ' + count);
+        console.log('Number of records created: ' + count);
+    });
 
 input.pipe(parser).pipe(transform)
 }

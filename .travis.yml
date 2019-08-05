@@ -11,13 +11,14 @@ services:
 
 env:
   global:
-  - NODE_ENV=test
+  - NODE_ENV=dev
 
 before_script:
   - psql -c 'create database cities;' -U postgres
   - npm run build
   - npm install -g sequelize-cli
-  - sequelize db:migrate
+  - npm run dbcreate
+  - npm run dev 
 script:
   - npm test
 after_success:

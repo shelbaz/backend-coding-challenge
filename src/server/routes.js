@@ -1,4 +1,5 @@
 import express from "express";
+import getSuggestionScore from "./lib/suggestions"
 
 let router = new express.Router();
 
@@ -11,7 +12,7 @@ router.get('/', (req, res) => res.status(200).send({
 // }));
 
 router.post('/suggestions', (req, res) => res.status(200).send({
-    message: 'Suggestions endpoint',
+    message: getSuggestionScore(),
 })); 
 
 export default router;

@@ -13,23 +13,23 @@ module.exports = {
       },
       country: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       admin1: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       longitude: {
         type: Sequelize.DOUBLE,
-        allowNull: false,
+        allowNull: true,
       },
       latitude: {
         type: Sequelize.DOUBLE,
-        allowNull: false,
+        allowNull: true,
       },
       population: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,
