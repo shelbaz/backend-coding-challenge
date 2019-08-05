@@ -1,9 +1,9 @@
 import fs from 'fs';
 import csv from 'csv';
-import sequelize from 'sequelize'
+const Sequelize = require('sequelize');
 var adminCodeToZip = require('../controllers/city.js').adminCodeToZip;
-const Cities = sequelize.import('../models/cities');
-
+const sequelize = new Sequelize(config.database, config.username, config.password, config);
+var model = sequelize['import']('../models/cities');
 
 var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');
 var parser = csv.parse({
@@ -21,7 +21,7 @@ var transform = csv.transform(function(row) {
         population: row['population'],
     }
     console.log(resultObj);
-    Cities.create(resultObj)
+    model.create(resultObj)
         .then(function() {
             console.log('Record created')
         })
