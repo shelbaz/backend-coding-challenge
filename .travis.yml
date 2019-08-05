@@ -17,7 +17,7 @@ before_script:
   - psql -c 'create database cities;' -U postgres
   - npm run build
   - npm install -g sequelize-cli
-  - npm run dbcreate
+  - sequelize db:migrate
   - npm run dev 
 script:
   - npm test
