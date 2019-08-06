@@ -4,7 +4,9 @@ var adminCodeToZip = require('../controllers/city.js').adminCodeToZip;
 var db = require('../models/');
 const City = db.sequelize.import('cities', require('../models/cities'));
 
-
+/**
+ * Initial seed the database with the csv file, loading it, parsing and then committing to db
+*/
 export default function seed(){
     var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');
     var parser = csv.parse({
@@ -13,8 +15,8 @@ export default function seed(){
         skip_lines_with_error: true,
         relax_column_count: true  
     })  
-var count = 0;
-var transform = csv.transform(function(row) {
+    var count = 0;
+    var transform = csv.transform(function(row) {
     
     var resultObj = {
         name: row['name'],
@@ -27,14 +29,15 @@ var transform = csv.transform(function(row) {
 
     City.create(resultObj)
         .then(function() {
-            // console.log(JSON.stringify(resultObj));
+            count++;
+            console.log('Number of records created: ' + count);
         })
         .catch(function(err) {
             console.log('Error encountered: ' + err)
         })
-        console.log('Number of records created: ' + count);
     });
 
 input.pipe(parser).pipe(transform)
+
 }
 
