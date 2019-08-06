@@ -1,0 +1,1779 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/app.js",
+    "content": "import routes from './server/routes';\nimport express from \"express\";\nimport http from \"http\";\nimport logger from \"morgan\";\nimport 'ejs';\nimport sassMiddleware from 'node-sass-middleware';\nimport cookieParser from \"cookie-parser\";\nimport bodyParser from \"body-parser\";\nconst path = require('path');\nimport 'babel-polyfill';\nvar models = require(\"../src/server/models\");\nimport seed from './server/seeders/seed'\n\nconst hostname = '127.0.0.1';\nconst port = normalizePort(process.env.PORT || 8080);\nconst app = express(); // setup express application\nconst server = http.createServer(app);\n\napp.use(logger('dev')); // log requests to the console\n\n// Parse incoming requests data\napp.use(bodyParser.json());\napp.use(bodyParser.urlencoded({ extended: false }));\n\n// view engine setup\napp.set('views', path.join(__dirname, 'views'));\napp.set('view engine', 'ejs');\n\napp.use(cookieParser());\napp.use(sassMiddleware({\n  src: path.join(__dirname, 'public'),\n  dest: path.join(__dirname, 'public'),\n  indentedSyntax: true, // true = .sass and false = .scss\n  sourceMap: true\n}));\napp.use(express.static(path.join(__dirname, 'public')));\n\napp.use(routes);\n\n\n// Automatically create the database with the models\nmodels.sequelize.sync({force: true}).then(function () {\n  server.listen(port, hostname, () => {\n    seed(); // seed the db with csv\n    console.log(`Server running at http://${hostname}:${port}/`);\n  });    \n});\n\nserver.on('error', onError);\nserver.on('listening', onListening);\n\n/**\n * Normalize a port into a number, string, or false.\n */\n\nfunction normalizePort(val) {\n  var port = parseInt(val, 10);\n\n  if (isNaN(port)) {\n    // named pipe\n    return val;\n  }\n\n  if (port >= 0) {\n    // port number\n    return port;\n  }\n\n  return false;\n}\n\n/**\n * Event listener for HTTP server \"error\" event.\n */\n\nfunction onError(error) {\n  if (error.syscall !== 'listen') {\n    throw error;\n  }\n\n  var bind = typeof port === 'string'\n    ? 'Pipe ' + port\n    : 'Port ' + port;\n\n  // handle specific listen errors with friendly messages\n  switch (error.code) {\n    case 'EACCES':\n      console.error(bind + ' requires elevated privileges');\n      process.exit(1);\n      break;\n    case 'EADDRINUSE':\n      console.error(bind + ' is already in use');\n      process.exit(1);\n      break;\n    default:\n      throw error;\n  }\n}\n\n/**\n * Event listener for HTTP server \"listening\" event.\n */\n\nfunction onListening() {\n  var addr = server.address();\n  var bind = typeof addr === 'string'\n    ? 'pipe ' + addr\n    : 'port ' + addr.port;\n  logger('Listening on ' + bind);\n}\n\n",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/app.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "path",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~path",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "models",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~models",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "variable",
+    "name": "hostname",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~hostname",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "variable",
+    "name": "port",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~port",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "variable",
+    "name": "app",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~app",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "variable",
+    "name": "server",
+    "memberof": "src/app.js",
+    "static": true,
+    "longname": "src/app.js~server",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 55,
+    "kind": "function",
+    "name": "normalizePort",
+    "memberof": "src/app.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/app.js~normalizePort",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": "Normalize a port into a number, string, or false.",
+    "lineNumber": 56,
+    "params": [
+      {
+        "name": "val",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "function",
+    "name": "onError",
+    "memberof": "src/app.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/app.js~onError",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": "Event listener for HTTP server \"error\" event.",
+    "lineNumber": 76,
+    "params": [
+      {
+        "name": "error",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 57,
+    "kind": "function",
+    "name": "onListening",
+    "memberof": "src/app.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/app.js~onListening",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/app.js",
+    "importStyle": null,
+    "description": "Event listener for HTTP server \"listening\" event.",
+    "lineNumber": 104,
+    "params": [],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "src/server/controllers/city.js",
+    "content": "var db = require('../models/index');\nconst City = db.sequelize.import('cities', require('../models/cities'));\n\n/**\n* City class database helper methods\n*/\nclass Cities {\n  \n  static async create(req, res) {\n    const { name, country, admin1, longitude, latitude, population } = req.body\n    return await City\n      .create({\n        name,\n        country,\n        admin1,\n        longitude,\n        latitude,\n        population\n      })\n      .then(city => res.status(201).send({\n        message: `Your city ${name} has been created successfully `\n      }))\n    }\n\n    /**\n     * Get only specific attributes of all rows.\n     *\n     * @param {Request} req.arr The array of attributes selected \n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getSome(req, res){\n      return await City.findAll({attributes: { include: req.body.arr }}) \n    }\n\n     /**\n     * Get all attributes of all rows.\n     *\n     * @param {Request} req Request of server\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getAll(req, res){\n      return await City.findAll({});\n    }\n    \n    /**\n     * Get partial string match of cities in database and return all attributes of matches\n     *\n     * @param {String} req.body.query Query string\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} matches of cities\n    */\n    static async getMatches(req, res){\n      let lookupValue = req.body.query.toLowerCase();\n\n      City.findAll({\n          attributes: {include: ['name', 'country', 'longitude', 'latitude']},\n          limit: 5,\n          where: {\n              asset_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('asset_name')), 'LIKE', '%' + lookupValue + '%')\n          }\n      }).then(function(assets){\n          return response.json({\n              msg: '** Matches **',\n              assets: assets\n          });\n      }).catch(function(error){\n          console.log(error);\n      });\n    }\n}\n\n/**\n * Convert numeric province code to 2 letter code if Canada\n *\n * @param {String} Integer string of province code\n * @return {String} of province code (CA) or state code (US)\n*/\nfunction adminCodeToZip(adminCode){\n    switch(adminCode){\n        case '01': return 'AB';\n        case '02': return 'BC';\n        case '03': return 'MB';\n        case '04': return 'NB';\n        case '05': return 'NL';\n        case '07': return 'NS';\n        case '08': return 'ON';\n        case '09': return 'PE';\n        case '10': return 'QC';\n        case '11': return 'SK';\n        case '12': return 'YT';\n        case '13': return 'NT';\n        case '14': return 'NU';\n        default: return adminCode;\n    }\n}\n\nexport {Cities, adminCodeToZip}",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/controllers/city.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "variable",
+    "name": "db",
+    "memberof": "src/server/controllers/city.js",
+    "static": true,
+    "longname": "src/server/controllers/city.js~db",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "variable",
+    "name": "City",
+    "memberof": "src/server/controllers/city.js",
+    "static": true,
+    "longname": "src/server/controllers/city.js~City",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "class",
+    "name": "Cities",
+    "memberof": "src/server/controllers/city.js",
+    "static": true,
+    "longname": "src/server/controllers/city.js~Cities",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importStyle": "{Cities}",
+    "description": "City class database helper methods",
+    "lineNumber": 7,
+    "interface": false
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "create",
+    "memberof": "src/server/controllers/city.js~Cities",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/controllers/city.js~Cities.create",
+    "access": "public",
+    "description": null,
+    "lineNumber": 9,
+    "undocument": true,
+    "params": [
+      {
+        "name": "req",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "getSome",
+    "memberof": "src/server/controllers/city.js~Cities",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/controllers/city.js~Cities.getSome",
+    "access": "public",
+    "description": "Get only specific attributes of all rows.",
+    "lineNumber": 32,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Request"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "req.arr",
+        "description": "The array of attributes selected"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Response"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "res",
+        "description": "Response of server"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array of {Objects}"
+      ],
+      "spread": false,
+      "description": "of all cities"
+    }
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "getAll",
+    "memberof": "src/server/controllers/city.js~Cities",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/controllers/city.js~Cities.getAll",
+    "access": "public",
+    "description": "Get all attributes of all rows.",
+    "lineNumber": 43,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Request"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "req",
+        "description": "Request of server"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Response"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "res",
+        "description": "Response of server"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array of {Objects}"
+      ],
+      "spread": false,
+      "description": "of all cities"
+    }
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "getMatches",
+    "memberof": "src/server/controllers/city.js~Cities",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/controllers/city.js~Cities.getMatches",
+    "access": "public",
+    "description": "Get partial string match of cities in database and return all attributes of matches",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "req.body.query",
+        "description": "Query string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Response"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "res",
+        "description": "Response of server"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array of {Objects}"
+      ],
+      "spread": false,
+      "description": "matches of cities"
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
+    "name": "adminCodeToZip",
+    "memberof": "src/server/controllers/city.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/controllers/city.js~adminCodeToZip",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importStyle": "{adminCodeToZip}",
+    "description": "Convert numeric province code to 2 letter code if Canada",
+    "lineNumber": 80,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "Integer",
+        "description": "string of province code"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "of province code (CA) or state code (US)"
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "name": "src/server/lib/suggestions.js",
+    "content": "import {City} from \"../models/cities\"\nvar parseString = require('xml2js').parseString;\n\nconst TOTAL_POPULATION = 240097546;\nconst CANADA = \"CA\";\nconst USA = \"US\";\n\n/**\n * Compute a certainty score for the potential match of query.\n *\n * @param {String} city The potential city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @param {Double} c2_latitude The latitude of the potential match.\n * @param {Double} c2_longitude The The longitude of the potential match.\n * @return {Integer} between 0-1 to compute certainty.\n*/\nfunction getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude){\n\n    let distanceScore = distanceWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));\n    let populationScore = populationWeight * getPopulationPercentage(population, country, TOTAL_POPULATION);\n    let apiScore = getGeocodeCertainty(c1_latitude, c1_longtitude);\n    let totalScore = distanceScore + populationScore + apiScore;\n    return totalScore; \n}\n\n/**\n * Generate the suggestions array of objects with their attributes \n *\n * @param {String} query The partial or full query of a city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @return {Array of {Objects}} between 0-1 to compute certainty.\n * @return Object attributes : name, lattitude, longitude, score\n*/\nfunction generateSuggestions(query, c1_latitude, c1_longtitude){\n\n}\n\n/**\n * Calculate the distance between 2 lat long coordinates \n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @param {Double} c2_latitude The latitude of point 2.\n * @param {Double} c2_longitude The longitude of point 2.\n * @return {Integer} distance in kms between both points\n*/\nfunction calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitude){\n    if ((c1_latitude == c2_latitude)     && \n        (c1_longtitude == c2_longtitude) || \n        (!c1_latitude || !c2_latitude || !c1_longtitude || !c2_longtitude)\n        ){\n\t\treturn 0;\n\t}\n\telse {\n            var p = 0.017453292519943295;    // Math.PI / 180\n            var c = Math.cos;\n            var a = 0.5 - c((lat2 - lat1) * p)/2 + \n                    c(lat1 * p) * c(lat2 * p) * \n                    (1 - c((lon2 - lon1) * p))/2;\n          \n            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km\n\t}\n}\n\n/**\n * Calculate the percentage of the population of the city vs total population of all cities in the csv \n *\n * @param {Integer}population Population count of the city.\n * @param {String}country Country of the city.\n * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv.\n * @return {Double} between 0-1 percentage of population \n*/\nfunction getPopulationPercentage(population, country, TOTAL_POPULATION){\n        if (population && country){\n                return (population/TOTAL_POPULATION);\n            }\n}\n\n/**\n * Geocode Localization for extra certainty using API\n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @return {String} Potential guess of the city from the coordinates \n*/\nfunction getGeocodeCertainty(c1_latitude, c1_longtitude){\n    \n    var url = 'https://geocode.xyz/LAT,LONG?geoit=xml';\n    url = url.replace('LAT', c1_latitude);\n    url = url.replace('LNG', c1_longtitude);\n    fetch(url)\n    .then(data =>{\n        parseString(data, function (err, result) {\n            let jsonData = JSON.stringify(result);\n            return jsonData.geodata.city;\n        });\n    })\n    .then(res => {return console.log(res)})   \n    \n}\n\n",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/lib/suggestions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "variable",
+    "name": "parseString",
+    "memberof": "src/server/lib/suggestions.js",
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~parseString",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "variable",
+    "name": "TOTAL_POPULATION",
+    "memberof": "src/server/lib/suggestions.js",
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~TOTAL_POPULATION",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "number"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "variable",
+    "name": "CANADA",
+    "memberof": "src/server/lib/suggestions.js",
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~CANADA",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "variable",
+    "name": "USA",
+    "memberof": "src/server/lib/suggestions.js",
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~USA",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "function",
+    "name": "getSuggestionScore",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~getSuggestionScore",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": "Compute a certainty score for the potential match of query.",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "city",
+        "description": "The potential city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_latitude",
+        "description": "The latitude of the potential match."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_longitude",
+        "description": "The The longitude of the potential match."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Integer"
+      ],
+      "spread": false,
+      "description": "between 0-1 to compute certainty."
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "function",
+    "name": "generateSuggestions",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~generateSuggestions",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": "Generate the suggestions array of objects with their attributes ",
+    "lineNumber": 36,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "query",
+        "description": "The partial or full query of a city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude in the search."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": "Object attributes : name, lattitude, longitude, score"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "calculateDistance",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~calculateDistance",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": "Calculate the distance between 2 lat long coordinates ",
+    "lineNumber": 49,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_latitude",
+        "description": "The latitude of point 2."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_longitude",
+        "description": "The longitude of point 2."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Integer"
+      ],
+      "spread": false,
+      "description": "distance in kms between both points"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "function",
+    "name": "getPopulationPercentage",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~getPopulationPercentage",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": "Calculate the percentage of the population of the city vs total population of all cities in the csv ",
+    "lineNumber": 75,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{Integer}population",
+        "description": "Population count of the city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{String}country",
+        "description": "Country of the city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "TOTAL_POPULATION",
+        "description": "Total population of all cities in the csv."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Double"
+      ],
+      "spread": false,
+      "description": "between 0-1 percentage of population"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "function",
+    "name": "getGeocodeCertainty",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~getGeocodeCertainty",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": "Geocode Localization for extra certainty using API",
+    "lineNumber": 88,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude of point 1."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "Potential guess of the city from the coordinates"
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "file",
+    "name": "src/server/migrations/20190804002546-create-cities.js",
+    "content": "module.exports = {\n  up: (queryInterface, Sequelize) => {\n    return queryInterface.createTable('cities', {\n      id: {\n        allowNull: false,\n        autoIncrement: true,\n        primaryKey: true,\n        type: Sequelize.INTEGER\n      },\n      name: {\n        type: Sequelize.STRING,\n        allowNull: false,\n      },\n      country: {\n        type: Sequelize.STRING,\n        allowNull: true,\n      },\n      admin1: {\n        type: Sequelize.STRING,\n        allowNull: true,\n      },\n      longitude: {\n        type: Sequelize.DOUBLE,\n        allowNull: true,\n      },\n      latitude: {\n        type: Sequelize.DOUBLE,\n        allowNull: true,\n      },\n      population: {\n        type: Sequelize.INTEGER,\n        allowNull: true,\n      },\n      createdAt: {\n        allowNull: false,\n        type: Sequelize.DATE\n      },\n      updatedAt: {\n        allowNull: false,\n        type: Sequelize.DATE\n      }\n    });\n  },\n  down: (queryInterface) => {\n    return queryInterface.dropTable('cities');\n  }\n};",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/migrations/20190804002546-create-cities.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 78,
+    "kind": "file",
+    "name": "src/server/models/cities.js",
+    "content": "export default (sequelize, DataTypes) => {\n  const City = sequelize.define('cities', {\n    name: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    country: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    admin1: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    latitude: {\n      type: DataTypes.DOUBLE,\n      allowNull: false,\n    },\n    longitude: {\n      type: DataTypes.DOUBLE,\n      allowNull: false,\n    },\n    population: {\n      type: DataTypes.INTEGER,\n      allowNull: false,\n    }\n  });\n  return City;\n};",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/models/cities.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "cities",
+    "memberof": "src/server/models/cities.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/models/cities.js~cities",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/models/cities.js",
+    "importStyle": "cities",
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "params": [
+      {
+        "name": "sequelize",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "DataTypes",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "file",
+    "name": "src/server/models/index.js",
+    "content": "\nconst fs = require('fs');\nconst path = require('path');\nconst Sequelize = require('sequelize');\nconst basename = path.basename(__filename);\nconst env = process.env.NODE_ENV || 'development';\nconst config = require(__dirname + '/../config/config.json')[env];\nconst db = {};\n\n// Auto transform the models into migration files and init the Sequelize objects for each model\nlet sequelize;\nif (config.use_env_variable) {\n  sequelize = new Sequelize(process.env[config.use_env_variable], config);\n} else {\n  sequelize = new Sequelize(config.database, config.username, config.password, config);\n}\n\nfs\n  .readdirSync(__dirname)\n  .filter(file => {\n    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');\n  })\n  .forEach(file => {\n    const model = sequelize['import'](path.join(__dirname, file));\n    db[model.name] = model;\n  });\n\nObject.keys(db).forEach(modelName => {\n  if (db[modelName].associate) {\n    db[modelName].associate(db);\n  }\n});\n\ndb.sequelize = sequelize;\ndb.Sequelize = Sequelize;\n\nmodule.exports = db;\n",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/models/index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 81,
+    "kind": "variable",
+    "name": "fs",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~fs",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "variable",
+    "name": "path",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~path",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "variable",
+    "name": "Sequelize",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~Sequelize",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "variable",
+    "name": "basename",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~basename",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "variable",
+    "name": "env",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~env",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "variable",
+    "name": "config",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~config",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "variable",
+    "name": "db",
+    "memberof": "src/server/models/index.js",
+    "static": true,
+    "longname": "src/server/models/index.js~db",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/models/index.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 8,
+    "undocument": true,
+    "type": {
+      "types": [
+        "{}"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "file",
+    "name": "src/server/routes.js",
+    "content": "import express from \"express\";\nimport getSuggestionScore from \"./lib/suggestions\"\nimport {getAll, getMatches} from './controllers/city'\n\nlet router = new express.Router();\n\nrouter.get('/', (req, res, next) => res.render('index.ejs', { title: 'Express' }));\n\n// router.post('*', (req, res) => res.status(200).send({\n// message: 'Welcome to the default API route',\n// }));\n\n// Suggestions GET endpoint for generating the list of potential matches and their score\nrouter.get('/suggestions', (req, res) => res.status(200).send(\n  {\n    message: getSuggestionScore(),\n})); \n\n// Get all cities in the DB \nrouter.get('/cities', (req, res) => res.status(200).send({\n  data: getAll(),\n}));\n\nrouter.get('/mycities/', (req, res) => {\n  var city = req.query.city;\n  var lat = req.query.lat;\n  var long = req.query.long;\n  \n  res.status(200).send({\n  \n  })\n})\n\nexport default router;",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/routes.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 89,
+    "kind": "file",
+    "name": "src/server/seeders/seed.js",
+    "content": "import fs from 'fs';\nimport csv from 'csv';\nvar adminCodeToZip = require('../controllers/city.js').adminCodeToZip;\nvar db = require('../models/');\nconst City = db.sequelize.import('cities', require('../models/cities'));\n\n/**\n * Initial seed the database with the csv file, loading it, parsing and then committing to db\n*/\nexport default function seed(){\n    var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');\n    var parser = csv.parse({\n        delimiter: '\\t',\n        columns: true,\n        skip_lines_with_error: true,\n        relax_column_count: true  \n    })  \n    var transform = csv.transform(function(row) {\n    \n    var resultObj = {\n        name: row['name'],\n        country: row['country'],\n        admin1: adminCodeToZip(row['admin1']),\n        longitude: row['long'],\n        latitude: row['lat'],\n        population: row['population'],\n    }\n\n    City.create(resultObj)\n        .then(function() {\n        })\n        .catch(function(err) {\n            console.log('Error encountered: ' + err)\n        })\n    });\n\ninput.pipe(parser).pipe(transform)\n}\n\n",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/seeders/seed.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 90,
+    "kind": "variable",
+    "name": "adminCodeToZip",
+    "memberof": "src/server/seeders/seed.js",
+    "static": true,
+    "longname": "src/server/seeders/seed.js~adminCodeToZip",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "variable",
+    "name": "db",
+    "memberof": "src/server/seeders/seed.js",
+    "static": true,
+    "longname": "src/server/seeders/seed.js~db",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "name": "City",
+    "memberof": "src/server/seeders/seed.js",
+    "static": true,
+    "longname": "src/server/seeders/seed.js~City",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "function",
+    "name": "seed",
+    "memberof": "src/server/seeders/seed.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/seeders/seed.js~seed",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
+    "importStyle": "seed",
+    "description": "Initial seed the database with the csv file, loading it, parsing and then committing to db",
+    "lineNumber": 10,
+    "params": [],
+    "return": null
+  },
+  {
+    "kind": "index",
+    "content": "[![Coverage Status](https://coveralls.io/repos/github/shelbaz/backend-coding-challenge/badge.svg)](https://coveralls.io/github/shelbaz/backend-coding-challenge)\n[![Build Status](https://travis-ci.com/shelbaz/backend-coding-challenge.svg?branch=master)](https://travis-ci.com/shelbaz/backend-coding-challenge)\n\n# Coveo Backend Coding Challenge\n(inspired by https://github.com/busbud/coding-challenge-backend-c)\n\n## Requirements\n\nDesign a REST API endpoint that provides auto-complete suggestions for large cities.\n\n- The endpoint is exposed at `/suggestions`\n- The partial (or complete) search term is passed as a querystring parameter `q`\n- The caller's location can optionally be supplied via querystring parameters `latitude` and `longitude` to help improve relative scores\n- The endpoint returns a JSON response with an array of scored suggested matches\n    - The suggestions are sorted by descending score\n    - Each suggestion has a score between 0 and 1 (inclusive) indicating confidence in the suggestion (1 is most confident)\n    - Each suggestion has a name which can be used to disambiguate between similarly named locations\n    - Each suggestion has a latitude and longitude\n\n## \"The rules\"\n\n- *You can use the language and technology of your choosing.* It's OK to try something new (tell us if you do), but feel free to use something you're comfortable with. We don't care if you use something we don't; the goal here is not to validate your knowledge of a particular technology.\n- End result should be deployed on a public Cloud (Heroku, AWS etc. all have free tiers you can use).\n\n## Advice\n\n- **Try to design and implement your solution as you would do for real production code**. Show us how you create clean, maintainable code that does awesome stuff. Build something that we'd be happy to contribute to. This is not a programming contest where dirty hacks win the game.\n- Documentation and maintainability are a plus, and don't you forget those unit tests.\n- We don’t want to know if you can do exactly as asked (or everybody would have the same result). We want to know what **you** bring to the table when working on a project, what is your secret sauce. More features? Best solution? Thinking outside the box?\n\n## Can I use a database?\n\nIf you wish, it's OK to use external systems such as a database, an Elastic index, etc. in your solution. But this is certainly not required to complete the basic requirements of the challenge. Keep in mind that **our goal here is to see some code of yours**; if you only implement a thin API on top of a DB we won't have much to look at.\n\nOur advice is that if you choose to use an external search system, you had better be doing something really truly awesome with it.\n\n## Sample responses\n\nThese responses are meant to provide guidance. The exact values can vary based on the data source and scoring algorithm\n\n**Near match**\n\n    GET /suggestions?q=Londo&latitude=43.70011&longitude=-79.4163\n\n```json\n{\n  \"suggestions\": [\n    {\n      \"name\": \"London, ON, Canada\",\n      \"latitude\": \"42.98339\",\n      \"longitude\": \"-81.23304\",\n      \"score\": 0.9\n    },\n    {\n      \"name\": \"London, OH, USA\",\n      \"latitude\": \"39.88645\",\n      \"longitude\": \"-83.44825\",\n      \"score\": 0.5\n    },\n    {\n      \"name\": \"London, KY, USA\",\n      \"latitude\": \"37.12898\",\n      \"longitude\": \"-84.08326\",\n      \"score\": 0.5\n    },\n    {\n      \"name\": \"Londontowne, MD, USA\",\n      \"latitude\": \"38.93345\",\n      \"longitude\": \"-76.54941\",\n      \"score\": 0.3\n    }\n  ]\n}\n```\n\n**No match**\n\n    GET /suggestions?q=SomeRandomCityInTheMiddleOfNowhere\n\n```json\n{\n  \"suggestions\": []\n}\n```\n\n## References\n\n- Geonames provides city lists Canada and the USA http://download.geonames.org/export/dump/readme.txt\n\n## Getting Started\n\nBegin by forking this repo and cloning your fork. GitHub has apps for [Mac](http://mac.github.com/) and\n[Windows](http://windows.github.com/) that make this easier.\n",
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"backend-coding-challenge\",\n  \"version\": \"1.0.0\",\n  \"description\": \"(inspired by https://github.com/busbud/coding-challenge-backend-c)\",\n  \"main\": \"app.js\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"dev\": \"nodemon --exec babel-node src/app.js\",\n    \"start\": \"node src/build/app.js\",\n    \"test\": \"export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./test/test.js --timeout 20000 --exit\",\n    \"build\": \"rm -rf ./src/build && babel -d ./src/build ./src -s\",\n    \"dbcreate\": \"createdb cities && sequelize db:migrate\",\n    \"createdb\": \"createdb\",\n    \"sequelize\": \"sequelize\",\n    \"generate-lcov\": \"nyc report --reporter=text-lcov > lcov.info\",\n    \"coveralls-coverage\": \"coveralls < lcov.info\",\n    \"codeclimate-coverage\": \"codeclimate-test-reporter < lcov.info\",\n    \"coverage\": \"nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/shelbaz/backend-coding-challenge.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/shelbaz/backend-coding-challenge/issues\"\n  },\n  \"homepage\": \"https://github.com/shelbaz/backend-coding-challenge#readme\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.4.3\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/node\": \"^7.2.2\",\n    \"@babel/plugin-transform-runtime\": \"^7.4.3\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@babel/register\": \"^7.5.5\",\n    \"@babel/runtime\": \"^7.4.3\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-loader\": \"^8.0.5\",\n    \"babel-preset-es2015\": \"^6.24.1\",\n    \"chai\": \"^4.2.0\",\n    \"codeclimate-test-reporter\": \"^0.5.1\",\n    \"coveralls\": \"^3.0.5\",\n    \"eslint\": \"^6.1.0\",\n    \"eslint-config-airbnb-base\": \"^13.2.0\",\n    \"eslint-plugin-import\": \"^2.18.2\",\n    \"mocha\": \"^6.2.0\",\n    \"nodemon\": \"^1.19.1\",\n    \"nyc\": \"^14.1.1\",\n    \"sequelize-cli\": \"^5.5.0\"\n  },\n  \"dependencies\": {\n    \"babel-core\": \"^6.26.3\",\n    \"babel-polyfill\": \"^6.26.0\",\n    \"body-parser\": \"^1.19.0\",\n    \"chai-http\": \"^4.3.0\",\n    \"cookie-parser\": \"^1.4.4\",\n    \"cross-env\": \"^5.2.0\",\n    \"csv\": \"^5.1.1\",\n    \"ejs\": \"^2.6.2\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"express\": \"^4.17.1\",\n    \"fs\": \"0.0.1-security\",\n    \"http\": \"0.0.0\",\n    \"logger\": \"0.0.1\",\n    \"morgan\": \"^1.9.1\",\n    \"node-sass-middleware\": \"^0.11.0\",\n    \"pg\": \"^7.12.0\",\n    \"pg-hstore\": \"^2.3.3\",\n    \"sequelize\": \"^5.12.3\",\n    \"xml2js\": \"^0.4.19\"\n  }\n}\n",
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

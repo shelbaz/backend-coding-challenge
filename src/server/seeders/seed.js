@@ -15,7 +15,6 @@ export default function seed(){
         skip_lines_with_error: true,
         relax_column_count: true  
     })  
-    var count = 0;
     var transform = csv.transform(function(row) {
     
     var resultObj = {
@@ -29,8 +28,6 @@ export default function seed(){
 
     City.create(resultObj)
         .then(function() {
-            count++;
-            console.log('Number of records created: ' + count);
         })
         .catch(function(err) {
             console.log('Error encountered: ' + err)
@@ -38,6 +35,5 @@ export default function seed(){
     });
 
 input.pipe(parser).pipe(transform)
-
 }
 

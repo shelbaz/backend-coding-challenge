@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/server/controllers/city.js | backend-coding-challenge</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backend-coding-challenge"><meta property="twitter:description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/shelbaz/backend-coding-challenge"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/server/controllers/city.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">var db = require(&apos;../models/index&apos;);
+const City = db.sequelize.import(&apos;cities&apos;, require(&apos;../models/cities&apos;));
+
+/**
+* City class database helper methods
+*/
+class Cities {
+  
+  static async create(req, res) {
+    const { name, country, admin1, longitude, latitude, population } = req.body
+    return await City
+      .create({
+        name,
+        country,
+        admin1,
+        longitude,
+        latitude,
+        population
+      })
+      .then(city =&gt; res.status(201).send({
+        message: `Your city ${name} has been created successfully `
+      }))
+    }
+
+    /**
+     * Get only specific attributes of all rows.
+     *
+     * @param {Request} req.arr The array of attributes selected 
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} of all cities
+    */
+    static async getSome(req, res){
+      return await City.findAll({attributes: { include: req.body.arr }}) 
+    }
+
+     /**
+     * Get all attributes of all rows.
+     *
+     * @param {Request} req Request of server
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} of all cities
+    */
+    static async getAll(req, res){
+      return await City.findAll({});
+    }
+    
+    /**
+     * Get partial string match of cities in database and return all attributes of matches
+     *
+     * @param {String} req.body.query Query string
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} matches of cities
+    */
+    static async getMatches(req, res){
+      let lookupValue = req.body.query.toLowerCase();
+
+      City.findAll({
+          attributes: {include: [&apos;name&apos;, &apos;country&apos;, &apos;longitude&apos;, &apos;latitude&apos;]},
+          limit: 5,
+          where: {
+              asset_name: sequelize.where(sequelize.fn(&apos;LOWER&apos;, sequelize.col(&apos;asset_name&apos;)), &apos;LIKE&apos;, &apos;%&apos; + lookupValue + &apos;%&apos;)
+          }
+      }).then(function(assets){
+          return response.json({
+              msg: &apos;** Matches **&apos;,
+              assets: assets
+          });
+      }).catch(function(error){
+          console.log(error);
+      });
+    }
+}
+
+/**
+ * Convert numeric province code to 2 letter code if Canada
+ *
+ * @param {String} Integer string of province code
+ * @return {String} of province code (CA) or state code (US)
+*/
+function adminCodeToZip(adminCode){
+    switch(adminCode){
+        case &apos;01&apos;: return &apos;AB&apos;;
+        case &apos;02&apos;: return &apos;BC&apos;;
+        case &apos;03&apos;: return &apos;MB&apos;;
+        case &apos;04&apos;: return &apos;NB&apos;;
+        case &apos;05&apos;: return &apos;NL&apos;;
+        case &apos;07&apos;: return &apos;NS&apos;;
+        case &apos;08&apos;: return &apos;ON&apos;;
+        case &apos;09&apos;: return &apos;PE&apos;;
+        case &apos;10&apos;: return &apos;QC&apos;;
+        case &apos;11&apos;: return &apos;SK&apos;;
+        case &apos;12&apos;: return &apos;YT&apos;;
+        case &apos;13&apos;: return &apos;NT&apos;;
+        case &apos;14&apos;: return &apos;NU&apos;;
+        default: return adminCode;
+    }
+}
+
+export {Cities, adminCodeToZip}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

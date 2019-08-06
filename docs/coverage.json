@@ -1,0 +1,67 @@
+{
+  "coverage": "36.84%",
+  "expectCount": 38,
+  "actualCount": 14,
+  "files": {
+    "src/app.js": {
+      "expectCount": 9,
+      "actualCount": 3,
+      "undocumentLines": [
+        9,
+        11,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "src/server/controllers/city.js": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        1,
+        2,
+        9
+      ]
+    },
+    "src/server/lib/suggestions.js": {
+      "expectCount": 9,
+      "actualCount": 5,
+      "undocumentLines": [
+        2,
+        4,
+        5,
+        6
+      ]
+    },
+    "src/server/models/cities.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/server/models/index.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "src/server/seeders/seed.js": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        3,
+        4,
+        5
+      ]
+    }
+  }
+}

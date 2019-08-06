@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | backend-coding-challenge</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backend-coding-challenge"><meta property="twitter:description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/shelbaz/backend-coding-challenge"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p><a href="https://coveralls.io/github/shelbaz/backend-coding-challenge"><img src="https://coveralls.io/repos/github/shelbaz/backend-coding-challenge/badge.svg" alt="Coverage Status"></a>
+<a href="https://travis-ci.com/shelbaz/backend-coding-challenge"><img src="https://travis-ci.com/shelbaz/backend-coding-challenge.svg?branch=master" alt="Build Status"></a></p>
+<h1 id="coveo-backend-coding-challenge">Coveo Backend Coding Challenge</h1><p>(inspired by <a href="https://github.com/busbud/coding-challenge-backend-c">https://github.com/busbud/coding-challenge-backend-c</a>)</p>
+<h2 id="requirements">Requirements</h2><p>Design a REST API endpoint that provides auto-complete suggestions for large cities.</p>
+<ul>
+<li>The endpoint is exposed at <code>/suggestions</code></li>
+<li>The partial (or complete) search term is passed as a querystring parameter <code>q</code></li>
+<li>The caller&apos;s location can optionally be supplied via querystring parameters <code>latitude</code> and <code>longitude</code> to help improve relative scores</li>
+<li>The endpoint returns a JSON response with an array of scored suggested matches<ul>
+<li>The suggestions are sorted by descending score</li>
+<li>Each suggestion has a score between 0 and 1 (inclusive) indicating confidence in the suggestion (1 is most confident)</li>
+<li>Each suggestion has a name which can be used to disambiguate between similarly named locations</li>
+<li>Each suggestion has a latitude and longitude</li>
+</ul>
+</li>
+</ul>
+<h2 id="-quot-the-rules-quot-">&quot;The rules&quot;</h2><ul>
+<li><em>You can use the language and technology of your choosing.</em> It&apos;s OK to try something new (tell us if you do), but feel free to use something you&apos;re comfortable with. We don&apos;t care if you use something we don&apos;t; the goal here is not to validate your knowledge of a particular technology.</li>
+<li>End result should be deployed on a public Cloud (Heroku, AWS etc. all have free tiers you can use).</li>
+</ul>
+<h2 id="advice">Advice</h2><ul>
+<li><strong>Try to design and implement your solution as you would do for real production code</strong>. Show us how you create clean, maintainable code that does awesome stuff. Build something that we&apos;d be happy to contribute to. This is not a programming contest where dirty hacks win the game.</li>
+<li>Documentation and maintainability are a plus, and don&apos;t you forget those unit tests.</li>
+<li>We don&#x2019;t want to know if you can do exactly as asked (or everybody would have the same result). We want to know what <strong>you</strong> bring to the table when working on a project, what is your secret sauce. More features? Best solution? Thinking outside the box?</li>
+</ul>
+<h2 id="can-i-use-a-database-">Can I use a database?</h2><p>If you wish, it&apos;s OK to use external systems such as a database, an Elastic index, etc. in your solution. But this is certainly not required to complete the basic requirements of the challenge. Keep in mind that <strong>our goal here is to see some code of yours</strong>; if you only implement a thin API on top of a DB we won&apos;t have much to look at.</p>
+<p>Our advice is that if you choose to use an external search system, you had better be doing something really truly awesome with it.</p>
+<h2 id="sample-responses">Sample responses</h2><p>These responses are meant to provide guidance. The exact values can vary based on the data source and scoring algorithm</p>
+<p><strong>Near match</strong></p>
+<pre><code><code class="source-code prettyprint">GET /suggestions?q=Londo&amp;latitude=43.70011&amp;longitude=-79.4163</code>
+</code></pre><pre><code class="lang-json"><code class="source-code prettyprint">{
+  &quot;suggestions&quot;: [
+    {
+      &quot;name&quot;: &quot;London, ON, Canada&quot;,
+      &quot;latitude&quot;: &quot;42.98339&quot;,
+      &quot;longitude&quot;: &quot;-81.23304&quot;,
+      &quot;score&quot;: 0.9
+    },
+    {
+      &quot;name&quot;: &quot;London, OH, USA&quot;,
+      &quot;latitude&quot;: &quot;39.88645&quot;,
+      &quot;longitude&quot;: &quot;-83.44825&quot;,
+      &quot;score&quot;: 0.5
+    },
+    {
+      &quot;name&quot;: &quot;London, KY, USA&quot;,
+      &quot;latitude&quot;: &quot;37.12898&quot;,
+      &quot;longitude&quot;: &quot;-84.08326&quot;,
+      &quot;score&quot;: 0.5
+    },
+    {
+      &quot;name&quot;: &quot;Londontowne, MD, USA&quot;,
+      &quot;latitude&quot;: &quot;38.93345&quot;,
+      &quot;longitude&quot;: &quot;-76.54941&quot;,
+      &quot;score&quot;: 0.3
+    }
+  ]
+}</code>
+</code></pre>
+<p><strong>No match</strong></p>
+<pre><code><code class="source-code prettyprint">GET /suggestions?q=SomeRandomCityInTheMiddleOfNowhere</code>
+</code></pre><pre><code class="lang-json"><code class="source-code prettyprint">{
+  &quot;suggestions&quot;: []
+}</code>
+</code></pre>
+<h2 id="references">References</h2><ul>
+<li>Geonames provides city lists Canada and the USA <a href="http://download.geonames.org/export/dump/readme.txt">http://download.geonames.org/export/dump/readme.txt</a></li>
+</ul>
+<h2 id="getting-started">Getting Started</h2><p>Begin by forking this repo and cloning your fork. GitHub has apps for <a href="http://mac.github.com/">Mac</a> and
+<a href="http://windows.github.com/">Windows</a> that make this easier.</p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

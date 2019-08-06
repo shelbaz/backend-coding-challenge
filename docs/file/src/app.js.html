@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/app.js | backend-coding-challenge</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backend-coding-challenge"><meta property="twitter:description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/shelbaz/backend-coding-challenge"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/app.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import routes from &apos;./server/routes&apos;;
+import express from &quot;express&quot;;
+import http from &quot;http&quot;;
+import logger from &quot;morgan&quot;;
+import &apos;ejs&apos;;
+import sassMiddleware from &apos;node-sass-middleware&apos;;
+import cookieParser from &quot;cookie-parser&quot;;
+import bodyParser from &quot;body-parser&quot;;
+const path = require(&apos;path&apos;);
+import &apos;babel-polyfill&apos;;
+var models = require(&quot;../src/server/models&quot;);
+import seed from &apos;./server/seeders/seed&apos;
+
+const hostname = &apos;127.0.0.1&apos;;
+const port = normalizePort(process.env.PORT || 8080);
+const app = express(); // setup express application
+const server = http.createServer(app);
+
+app.use(logger(&apos;dev&apos;)); // log requests to the console
+
+// Parse incoming requests data
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// view engine setup
+app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));
+app.set(&apos;view engine&apos;, &apos;ejs&apos;);
+
+app.use(cookieParser());
+app.use(sassMiddleware({
+  src: path.join(__dirname, &apos;public&apos;),
+  dest: path.join(__dirname, &apos;public&apos;),
+  indentedSyntax: true, // true = .sass and false = .scss
+  sourceMap: true
+}));
+app.use(express.static(path.join(__dirname, &apos;public&apos;)));
+
+app.use(routes);
+
+
+// Automatically create the database with the models
+models.sequelize.sync({force: true}).then(function () {
+  server.listen(port, hostname, () =&gt; {
+    seed(); // seed the db with csv
+    console.log(`Server running at http://${hostname}:${port}/`);
+  });    
+});
+
+server.on(&apos;error&apos;, onError);
+server.on(&apos;listening&apos;, onListening);
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port &gt;= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server &quot;error&quot; event.
+ */
+
+function onError(error) {
+  if (error.syscall !== &apos;listen&apos;) {
+    throw error;
+  }
+
+  var bind = typeof port === &apos;string&apos;
+    ? &apos;Pipe &apos; + port
+    : &apos;Port &apos; + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case &apos;EACCES&apos;:
+      console.error(bind + &apos; requires elevated privileges&apos;);
+      process.exit(1);
+      break;
+    case &apos;EADDRINUSE&apos;:
+      console.error(bind + &apos; is already in use&apos;);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server &quot;listening&quot; event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === &apos;string&apos;
+    ? &apos;pipe &apos; + addr
+    : &apos;port &apos; + addr.port;
+  logger(&apos;Listening on &apos; + bind);
+}
+
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@ COPY package-lock.json ./
 
 RUN npm ci
 COPY . /home/app
-EXPOSE 3000 5432
+EXPOSE 8080 5432
 
 CMD npm run build
 COPY ./src/build /home/app/src/build

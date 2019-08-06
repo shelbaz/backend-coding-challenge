@@ -4,9 +4,7 @@ import {getAll, getMatches} from './controllers/city'
 
 let router = new express.Router();
 
-router.get('/', (req, res) => res.status(200).send({
-    message: 'Default endpoint',
-  }));
+router.get('/', (req, res, next) => res.render('index.ejs', { title: 'Express' }));
 
 // router.post('*', (req, res) => res.status(200).send({
 // message: 'Welcome to the default API route',
