@@ -8,6 +8,7 @@ install:
   - npm install
 services:
   - postgresql
+cache: npm
 
 env:
   global:
@@ -19,7 +20,6 @@ before_script:
   - npm run build
   - npm install -g sequelize-cli
   - sequelize db:migrate
-  - npm run dev 
 script:
   - npm test
 after_success:
