@@ -3,10 +3,35 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <a href='../../docs/index.html'> Code Documentation </a>
-    <p>Welcome to Shawn's Coding Backend Challenge</p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Backend Challenge</a>
+        </div>
+      </div>
+    </nav>
+
+  <!-- First Container -->
+  <div class="container-fluid bg-1 text-center">
+    <h3 class="margin">DEMO</h3>
+    <p>Copy the following path to try it out!</p>
+      <h4>/suggestions?q=Jackson&lat=45.83345&long=-61.99858</h4>
+  </div>
+
+    <h1><a href='../../docs/index.html'> Code Documentation </a></h1>
+
+    <!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+    <p>Implemented By: Shawn Elbaz</p>
+      <h4><a target="_blank" href="https://github.com/shelbaz">Github</a></h4>
+      <h4><a target="_blank" href="https://www.linkedin.com/in/shawn-elbaz-a64434b6/">LinkedIn</a></h4>
+    </footer>
   </body>
 </html>
