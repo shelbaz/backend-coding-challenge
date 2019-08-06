@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/cli": "^7.5.5",
     "@babel/runtime": "^7.4.3",
-    "babel-cli": "^7.0.0-beta.44",
+    "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.0-beta.6",
     "chai": "^4.2.0",
     "codeclimate-test-reporter": "^0.5.1",
@@ -51,9 +51,7 @@
     "sequelize-cli": "^5.5.0"
   },
   "dependencies": {
-    "babel-core": "^7.0.0-beta.44",
     "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^7.0.0-beta.44",
     "body-parser": "^1.19.0",
     "chai-http": "^4.3.0",
     "cookie-parser": "^1.4.4",
