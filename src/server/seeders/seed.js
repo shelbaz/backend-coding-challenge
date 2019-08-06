@@ -1,5 +1,6 @@
 import fs from 'fs';
 import csv from 'csv';
+import path from 'path';
 var adminCodeToZip = require('../controllers/city.js').adminCodeToZip;
 var db = require('../models/');
 const City = db.sequelize.import('cities', require('../models/cities'));
@@ -8,7 +9,8 @@ const City = db.sequelize.import('cities', require('../models/cities'));
  * Initial seed the database with the csv file, loading it, parsing and then committing to db
 */
 export default function seed(){
-    var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');
+    const thePath = path.join(__dirname, '../../data/cities_canada-usa.tsv');
+    var input = fs.createReadStream(thePath);
     var parser = csv.parse({
         delimiter: '\t',
         columns: true,
