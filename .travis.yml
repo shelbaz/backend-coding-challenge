@@ -8,7 +8,9 @@ install:
   - npm install
 services:
   - postgresql
-cache: npm
+cache:
+  directories:
+    - node_modules
 
 env:
   global:

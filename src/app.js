@@ -7,7 +7,6 @@ import sassMiddleware from 'node-sass-middleware';
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 const path = require('path');
-import 'babel-polyfill';
 var models = require("../src/server/models");
 import seed from './server/seeders/seed'
 
