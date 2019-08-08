@@ -8,20 +8,20 @@ import {getGeocodeCertainty, calculateDistance, getPopulationPercentage} from '.
 
 chai.use(chatHttp);
 
-describe('Testing the suggestions endpoints:', () => {
-    it('It should return a list of matching suggestions', (done) => {
-      const url = '?q=Londo&latitude=43.70011&longitude=-79.4163'
-      chai.request(app)
-        .get('/suggestions/' + url)
-        .end((err, res) => {
-          expect(res.status).to.equal(201);
-          expect(res.body.data).to.include({
-            // expected response arr of objs : TODO
-          });
-          done();
-        });
-    })
-});
+// describe('Testing the suggestions endpoints:', () => {
+//     it('It should return a list of matching suggestions', (done) => {
+//       const url = '?q=Londo&latitude=43.70011&longitude=-79.4163'
+//       chai.request(app)
+//         .get('/suggestions/' + url)
+//         .end((err, res) => {
+//           expect(res.status).to.equal(201);
+//           expect(res.body.data).to.include({
+//             // expected response arr of objs : TODO
+//           });
+//           done();
+//         });
+//     })
+// });
 
 /* Test */
 it('should calculate & return distance in km between 2 points', function(){
@@ -43,11 +43,11 @@ it('should calculate the population percentage of total population', function(){
     assert.equal(finalPercentage, populationPercentage);
 });
 
-/* Test */
-it('Get the most likely city from the lat long coordinates from API', function(){
-    let likely_city = 'Washington';
-    let c1_latitude = 38.898556;
-    let c1_longitude = -77.037852;
-    var cityGuess = getGeocodeCertainty(c1_latitude, c1_longitude);
-    assert.equal(likely_city, cityGuess);
-});
+// /* Test */
+// it('Get the most likely city from the lat long coordinates from API', function(){
+//     let likely_city = 'Washington';
+//     let c1_latitude = 38.898556;
+//     let c1_longitude = -77.037852;
+//     var cityGuess = getGeocodeCertainty(c1_latitude, c1_longitude);
+//     assert.equal(likely_city, cityGuess);
+// });

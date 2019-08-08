@@ -18,7 +18,7 @@
     "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
     "coveralls-coverage": "coveralls < lcov.info",
     "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
-    "coverage": "nyc --require @babel/register npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage"
+    "coverage": "nyc --require @babel/register npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
