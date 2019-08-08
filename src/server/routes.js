@@ -16,12 +16,4 @@ router.get('/suggestions', CityController.getMatches);
 // Get all cities in the DB 
 router.get('/cities', CityController.getAll);
 
-router.get('/mycities/', (req, res) => {
-  
-  
-  res.status(200).send({
-  
-  })
-})
-
 export default router;

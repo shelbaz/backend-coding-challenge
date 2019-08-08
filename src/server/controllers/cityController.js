@@ -75,7 +75,7 @@ class CityController {
       suggestionsList.suggestions = [];
       for(let city in cityMatches){
         let suggestionsObj = {
-          "name": cityMatches[city].name,
+          "name": cityMatches[city].name + ', ' + cityMatches[city].admin1 + ', ' + cityMatches[city].country ,
           "latitude": cityMatches[city].latitude,
           "longitude": cityMatches[city].longitude,
           "score": 0
