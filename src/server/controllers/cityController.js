@@ -43,7 +43,6 @@ class CityController {
     */
     static async getAll(req, res){
       try {
-        console.log('hit here');
         const allCities = await CityService.getAllCities();
         if (allCities.length > 0) {
           util.setSuccess(200, 'Cities retrieved', allCities);
@@ -79,7 +78,7 @@ class CityController {
               assets: assets
           });
       }).catch(function(error){
-          console.log(error);
+          logger.log('error', error);
       });
     }
 }

@@ -3,11 +3,13 @@
         [
             "@babel/preset-env",
             {
-              "targets": {
-                "node": "current"
-              }
+                "targets": {
+                    "node": "current"
+                }
             }
         ]
     ],
-    "ignore": ["node_modules"]
+    "ignore": [
+        "node_modules"
+    ]
 }

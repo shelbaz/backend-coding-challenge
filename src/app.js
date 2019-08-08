@@ -1,7 +1,8 @@
 import routes from './server/routes';
 import express from "express";
+import expressWinston from "express-winston";
+import {logger} from './server/lib/logger'
 import http from "http";
-import logger from "morgan";
 import 'ejs';
 import sassMiddleware from 'node-sass-middleware';
 import cookieParser from "cookie-parser";
@@ -15,7 +16,7 @@ const port = normalizePort(process.env.PORT || 8080);
 const app = express(); // setup express application
 const server = http.createServer(app);
 
-app.use(logger('dev')); // log requests to the console
+app.use(expressWinston.logger(logger)); // log requests to the console
 
 // Parse incoming requests data
 app.use(bodyParser.json());
@@ -41,12 +42,17 @@ app.use(routes);
 models.sequelize.sync({force: true}).then(function () {
   server.listen(port, hostname, () => {
     seed(); // seed the db with csv
-    console.log(`Server running at http://${hostname}:${port}/`);
+    logger.log({
+      level: 'info',
+      message: `Server running at http://${hostname}:${port}/`
+    });
   });    
 });
 
 server.on('error', onError);
 server.on('listening', onListening);
+app.use(expressWinston.errorLogger(logger));
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -105,6 +111,11 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  logger('Listening on ' + bind);
+  logger.log({
+    level: 'info',
+    message: 'Listening on ' + bind
+  });
 }
+
+
 
