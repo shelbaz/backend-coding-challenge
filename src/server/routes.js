@@ -1,5 +1,4 @@
 import express from "express";
-import {getSuggestionScore} from "./lib/suggestions"
 import {CityController} from './controllers/cityController'
 
 let router = new express.Router();

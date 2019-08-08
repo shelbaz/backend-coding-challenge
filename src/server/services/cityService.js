@@ -4,7 +4,6 @@ import sequelize from 'sequelize';
 import { logger } from '../lib/logger';
 const Op = sequelize.Op;
 
-
 class CityService {
     static async getAllCities() {
         try {
@@ -28,7 +27,7 @@ class CityService {
                 attributes: {include: ['name', 'country', 'longitude', 'latitude']},
                   where: {
                     name: {
-                      [Op.iLike]: `%${lookupValue}%`
+                      [Op.iLike]: `%${lookupValue}%` // trigram lookup 
                     }
                   }
                 });

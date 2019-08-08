@@ -111,7 +111,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  logger.log({
+  logger.info({
     level: 'info',
     message: 'Listening on ' + bind
   });
