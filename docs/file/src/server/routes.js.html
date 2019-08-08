@@ -29,18 +29,25 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-lib">server/lib</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-services">server/services</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/server/routes.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import express from &quot;express&quot;;
-import getSuggestionScore from &quot;./lib/suggestions&quot;
-import {getAll, getMatches} from &apos;./controllers/city&apos;
+import {CityController} from &apos;./controllers/cityController&apos;
 
 let router = new express.Router();
 
@@ -51,25 +58,10 @@ router.get(&apos;/&apos;, (req, res, next) =&gt; res.render(&apos;index.ejs&apos
 // }));
 
 // Suggestions GET endpoint for generating the list of potential matches and their score
-router.get(&apos;/suggestions&apos;, (req, res) =&gt; res.status(200).send(
-  {
-    message: getSuggestionScore(),
-})); 
+router.get(&apos;/suggestions&apos;, CityController.getMatches); 
 
 // Get all cities in the DB 
-router.get(&apos;/cities&apos;, (req, res) =&gt; res.status(200).send({
-  data: getAll(),
-}));
-
-router.get(&apos;/mycities/&apos;, (req, res) =&gt; {
-  var city = req.query.city;
-  var lat = req.query.lat;
-  var long = req.query.long;
-  
-  res.status(200).send({
-  
-  })
-})
+router.get(&apos;/cities&apos;, CityController.getAll);
 
 export default router;</code></pre>
 

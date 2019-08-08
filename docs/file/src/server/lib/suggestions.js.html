@@ -29,21 +29,25 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-lib">server/lib</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-services">server/services</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/server/lib/suggestions.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {City} from &quot;../models/cities&quot;
-var parseString = require(&apos;xml2js&apos;).parseString;
-
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">var XMLHttpRequest = require(&quot;xmlhttprequest&quot;).XMLHttpRequest;
 const TOTAL_POPULATION = 240097546;
-const CANADA = &quot;CA&quot;;
-const USA = &quot;US&quot;;
 
 /**
  * Compute a certainty score for the potential match of query.
@@ -55,12 +59,21 @@ const USA = &quot;US&quot;;
  * @param {Double} c2_longitude The The longitude of the potential match.
  * @return {Integer} between 0-1 to compute certainty.
 */
-function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude){
+function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){
+    let equalWeight = 1/2; // a third weight each
+    let distanceScore = equalWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));// TODO
+    let populationScore = equalWeight * getPopulationPercentage(population, TOTAL_POPULATION);
+    console.log(&apos;distanceScore:&apos; +distanceScore);
+    console.log(&apos;populationScore:&apos; +populationScore);
+    let suggestionScore = 0;
+    let suggestionCity = getGeocodeCertainty(c1_latitude, c1_longtitude);
+    console.log(&apos;suggestion: &apos; + JSON.stringify(suggestionCity) + &apos; compared: &apos; + city)
+    if (city == suggestionCity.city + &apos;, &apos; + suggestionCity.state){
+        suggestionScore += equalWeight
+    }
+    console.log(&apos;apiScore:&apos; +suggestionScore);
 
-    let distanceScore = distanceWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));
-    let populationScore = populationWeight * getPopulationPercentage(population, country, TOTAL_POPULATION);
-    let apiScore = getGeocodeCertainty(c1_latitude, c1_longtitude);
-    let totalScore = distanceScore + populationScore + apiScore;
+    let totalScore = distanceScore + populationScore;
     return totalScore; 
 }
 
@@ -94,13 +107,17 @@ function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitud
 		return 0;
 	}
 	else {
-            var p = 0.017453292519943295;    // Math.PI / 180
-            var c = Math.cos;
-            var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                    c(lat1 * p) * c(lat2 * p) * 
-                    (1 - c((lon2 - lon1) * p))/2;
-          
-            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+        var R = 6371; // Radius of the earth in km
+        var distanceLat = (c2_latitude-c1_latitude) * (Math.PI/180);  
+        var distanceLon = (c2_longtitude-c1_longtitude) * (Math.PI/180); 
+        var a = 
+          Math.sin(distanceLat/2) * Math.sin(distanceLat/2) +
+          Math.cos((c1_latitude) * (Math.PI/180)) * Math.cos((c2_latitude) * (Math.PI/180)) * 
+          Math.sin(distanceLon/2) * Math.sin(distanceLon/2)
+          ; 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; // Distance in km
+        return d;
 	}
 }
 
@@ -112,8 +129,8 @@ function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitud
  * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv.
  * @return {Double} between 0-1 percentage of population 
 */
-function getPopulationPercentage(population, country, TOTAL_POPULATION){
-        if (population &amp;&amp; country){
+function getPopulationPercentage(population, TOTAL_POPULATION){
+        if (population){
                 return (population/TOTAL_POPULATION);
             }
 }
@@ -127,20 +144,23 @@ function getPopulationPercentage(population, country, TOTAL_POPULATION){
 */
 function getGeocodeCertainty(c1_latitude, c1_longtitude){
     
-    var url = &apos;https://geocode.xyz/LAT,LONG?geoit=xml&apos;;
+    var url = &apos;https://geocode.xyz/LAT,LNG?geoit=json&apos;;
     url = url.replace(&apos;LAT&apos;, c1_latitude);
     url = url.replace(&apos;LNG&apos;, c1_longtitude);
-    fetch(url)
-    .then(data =&gt;{
-        parseString(data, function (err, result) {
-            let jsonData = JSON.stringify(result);
-            return jsonData.geodata.city;
-        });
-    })
-    .then(res =&gt; {return console.log(res)})   
+    console.log(&apos;url:&apos; + url)
     
+    var xhr = new XMLHttpRequest(); // a new request
+    xhr.open(&quot;GET&quot;,url,false);
+    xhr.send(null);
+    var json_obj = JSON.parse(xhr.responseText);  
+    console.log(&apos;json_obj&apos;+ JSON.stringify(json_obj));        
+    return {
+        city: json_obj.city,
+        state: json_obj.state
+    };    
 }
 
+export {getGeocodeCertainty, getPopulationPercentage, calculateDistance, getSuggestionScore}
 </code></pre>
 
 </div>

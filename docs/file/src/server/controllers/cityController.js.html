@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/server/controllers/cityController.js | backend-coding-challenge</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="backend-coding-challenge"><meta property="twitter:description" content="(inspired by https://github.com/busbud/coding-challenge-backend-c)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/shelbaz/backend-coding-challenge"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-lib">server/lib</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-services">server/services</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/server/controllers/cityController.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Util from &apos;../lib/utils&apos;;
+import CityService from &apos;../services/cityService&apos;;
+import {logger} from &apos;../lib/logger&apos;;
+import {getSuggestionScore} from &apos;../lib/suggestions&apos;;
+
+const util = new Util();
+
+/**
+* City class database helper methods
+*/
+class CityController {
+  static async create(req, res) {
+      if (!req.body.name || !req.body.country || !req.body.admin1 || !req.body.longitude || !req.body.latitude || !req.body.population) {
+        util.setError(400, &apos;Incomplete details&apos;);
+        return util.send(res);
+      }
+      const { name, country, admin1, longitude, latitude, population } = req.body
+      try {
+        const createdCity = await CityService.addCity(name, country, admin1, longitude, latitude, population);
+        util.setSuccess(201, &apos;City Added!&apos;, createdCity);
+        return util.send(res);
+      } catch (error) {
+        util.setError(400, error.message);
+        return util.send(res);
+      }
+    }
+
+    /**
+     * Get only specific attributes of all rows.
+     *
+     * @param {Request} req.arr The array of attributes selected 
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} of all cities
+    */
+    static async getSome(req, res){
+      return await City.findAll({attributes: { include: req.body.arr }}) 
+    }
+
+     /**
+     * Get all attributes of all rows.
+     *
+     * @param {Request} req Request of server
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} of all cities
+    */
+    static async getAll(req, res){
+      try {
+        const allCities = await CityService.getAllCities();
+        if (allCities.length &gt; 0) {
+          util.setSuccess(200, &apos;Cities retrieved&apos;, allCities);
+        } else {
+          util.setSuccess(200, &apos;No cities found&apos;);
+        }
+        return util.send(res);
+      } catch (error) {
+        util.setError(400, error);
+        return util.send(res);
+      }
+    }
+    
+    /**
+     * Get partial string match of cities in database and return all attributes of matches
+     *
+     * @param {String} req.body.query Query string
+     * @param {Response} res Response of server
+     * @return {Array of {Objects}} matches of cities
+    */
+    static async getMatches(req, res){
+      let lookupValue = req.query.q.toLowerCase();
+      let latitude = req.query.latitude;
+      let longitude = req.query.longitude;
+      logger.log(&apos;info&apos;, &apos;city: &apos; + lookupValue + &apos; lat: &apos; + latitude + &apos; long: &apos; + longitude);
+
+      const cityMatches = await CityService.findACity(lookupValue);
+      let suggestionsList = {};
+      suggestionsList.suggestions = [];
+      for(let city in cityMatches){
+        let cityAndState = cityMatches[city].name + &apos;, &apos; + cityMatches[city].admin1;
+        let suggestionsObj = {
+          &quot;name&quot;: cityAndState + &apos;, &apos; + cityMatches[city].country,
+          &quot;latitude&quot;: cityMatches[city].latitude,
+          &quot;longitude&quot;: cityMatches[city].longitude,
+          &quot;score&quot;: getSuggestionScore(cityAndState, latitude, longitude, cityMatches[city].lattitude, cityMatches[city].longitude, cityMatches[city].population)
+        };
+        suggestionsList.suggestions.push(suggestionsObj);
+      }
+      console.log(&apos;**MATCHES**&apos;)
+      console.log(JSON.stringify(suggestionsList));
+      // descending order
+      var sortedList = suggestionsList.suggestions.sort((a, b) =&gt; parseFloat(b.score) - parseFloat(a.score));
+      console.log(&apos;**sortedList**&apos;)
+      console.log(sortedList)
+
+      res.send(sortedList)
+  }
+}
+
+/**
+ * Convert numeric province code to 2 letter code if Canada
+ *
+ * @param {String} Integer string of province code
+ * @return {String} of province code (CA) or state code (US- default)
+*/
+function adminCodeToZip(adminCode){
+    switch(adminCode){
+        case &apos;01&apos;: return &apos;AB&apos;;
+        case &apos;02&apos;: return &apos;BC&apos;;
+        case &apos;03&apos;: return &apos;MB&apos;;
+        case &apos;04&apos;: return &apos;NB&apos;;
+        case &apos;05&apos;: return &apos;NL&apos;;
+        case &apos;07&apos;: return &apos;NS&apos;;
+        case &apos;08&apos;: return &apos;ON&apos;;
+        case &apos;09&apos;: return &apos;PE&apos;;
+        case &apos;10&apos;: return &apos;QC&apos;;
+        case &apos;11&apos;: return &apos;SK&apos;;
+        case &apos;12&apos;: return &apos;YT&apos;;
+        case &apos;13&apos;: return &apos;NT&apos;;
+        case &apos;14&apos;: return &apos;NU&apos;;
+        default: return adminCode;
+    }
+}
+export {CityController, adminCodeToZip}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

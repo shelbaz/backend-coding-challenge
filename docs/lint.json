@@ -1,38 +1,38 @@
 [
   {
-    "name": "Cities.getSome",
-    "filePath": "src/server/controllers/city.js",
+    "name": "CityController.getSome",
+    "filePath": "src/server/controllers/cityController.js",
     "lines": [
       {
-        "lineNumber": 24,
+        "lineNumber": 27,
         "line": "    /**"
       },
       {
-        "lineNumber": 25,
+        "lineNumber": 28,
         "line": "     * Get only specific attributes of all rows."
       },
       {
-        "lineNumber": 26,
+        "lineNumber": 29,
         "line": "     *"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 30,
         "line": "     * @param {Request} req.arr The array of attributes selected "
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 31,
         "line": "     * @param {Response} res Response of server"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 32,
         "line": "     * @return {Array of {Objects}} of all cities"
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 33,
         "line": "    */"
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 34,
         "line": "    static async getSome(req, res){"
       }
     ],
@@ -45,39 +45,39 @@
     ]
   },
   {
-    "name": "Cities.getMatches",
-    "filePath": "src/server/controllers/city.js",
+    "name": "CityController.getMatches",
+    "filePath": "src/server/controllers/cityController.js",
     "lines": [
       {
-        "lineNumber": 46,
+        "lineNumber": 60,
         "line": "    /**"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 61,
         "line": "     * Get partial string match of cities in database and return all attributes of matches"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 62,
         "line": "     *"
       },
       {
-        "lineNumber": 49,
+        "lineNumber": 63,
         "line": "     * @param {String} req.body.query Query string"
       },
       {
-        "lineNumber": 50,
+        "lineNumber": 64,
         "line": "     * @param {Response} res Response of server"
       },
       {
-        "lineNumber": 51,
+        "lineNumber": 65,
         "line": "     * @return {Array of {Objects}} matches of cities"
       },
       {
-        "lineNumber": 52,
+        "lineNumber": 66,
         "line": "    */"
       },
       {
-        "lineNumber": 53,
+        "lineNumber": 67,
         "line": "    static async getMatches(req, res){"
       }
     ],
@@ -91,34 +91,34 @@
   },
   {
     "name": "adminCodeToZip",
-    "filePath": "src/server/controllers/city.js",
+    "filePath": "src/server/controllers/cityController.js",
     "lines": [
       {
-        "lineNumber": 73,
+        "lineNumber": 97,
         "line": "/**"
       },
       {
-        "lineNumber": 74,
+        "lineNumber": 98,
         "line": " * Convert numeric province code to 2 letter code if Canada"
       },
       {
-        "lineNumber": 75,
+        "lineNumber": 99,
         "line": " *"
       },
       {
-        "lineNumber": 76,
+        "lineNumber": 100,
         "line": " * @param {String} Integer string of province code"
       },
       {
-        "lineNumber": 77,
-        "line": " * @return {String} of province code (CA) or state code (US)"
+        "lineNumber": 101,
+        "line": " * @return {String} of province code (CA) or state code (US- default)"
       },
       {
-        "lineNumber": 78,
+        "lineNumber": 102,
         "line": "*/"
       },
       {
-        "lineNumber": 79,
+        "lineNumber": 103,
         "line": "function adminCodeToZip(adminCode){"
       }
     ],
@@ -130,111 +130,47 @@
     ]
   },
   {
-    "name": "getSuggestionScore",
-    "filePath": "src/server/lib/suggestions.js",
-    "lines": [
-      {
-        "lineNumber": 7,
-        "line": "/**"
-      },
-      {
-        "lineNumber": 8,
-        "line": " * Compute a certainty score for the potential match of query."
-      },
-      {
-        "lineNumber": 9,
-        "line": " *"
-      },
-      {
-        "lineNumber": 10,
-        "line": " * @param {String} city The potential city."
-      },
-      {
-        "lineNumber": 11,
-        "line": " * @param {Double} c1_latitude The latitude in the search."
-      },
-      {
-        "lineNumber": 12,
-        "line": " * @param {Double} c1_longitude The longitude in the search."
-      },
-      {
-        "lineNumber": 13,
-        "line": " * @param {Double} c2_latitude The latitude of the potential match."
-      },
-      {
-        "lineNumber": 14,
-        "line": " * @param {Double} c2_longitude The The longitude of the potential match."
-      },
-      {
-        "lineNumber": 15,
-        "line": " * @return {Integer} between 0-1 to compute certainty."
-      },
-      {
-        "lineNumber": 16,
-        "line": "*/"
-      },
-      {
-        "lineNumber": 17,
-        "line": "function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude){"
-      }
-    ],
-    "codeParams": [
-      "city",
-      "c1_latitude",
-      "c1_longtitude",
-      "c2_latitude",
-      "c2_longtitude"
-    ],
-    "docParams": [
-      "city",
-      "c1_latitude",
-      "c1_longitude",
-      "c2_latitude",
-      "c2_longitude"
-    ]
-  },
-  {
     "name": "generateSuggestions",
     "filePath": "src/server/lib/suggestions.js",
     "lines": [
       {
-        "lineNumber": 26,
+        "lineNumber": 31,
         "line": "/**"
       },
       {
-        "lineNumber": 27,
+        "lineNumber": 32,
         "line": " * Generate the suggestions array of objects with their attributes "
       },
       {
-        "lineNumber": 28,
+        "lineNumber": 33,
         "line": " *"
       },
       {
-        "lineNumber": 29,
+        "lineNumber": 34,
         "line": " * @param {String} query The partial or full query of a city."
       },
       {
-        "lineNumber": 30,
+        "lineNumber": 35,
         "line": " * @param {Double} c1_latitude The latitude in the search."
       },
       {
-        "lineNumber": 31,
+        "lineNumber": 36,
         "line": " * @param {Double} c1_longitude The longitude in the search."
       },
       {
-        "lineNumber": 32,
+        "lineNumber": 37,
         "line": " * @return {Array of {Objects}} between 0-1 to compute certainty."
       },
       {
-        "lineNumber": 33,
+        "lineNumber": 38,
         "line": " * @return Object attributes : name, lattitude, longitude, score"
       },
       {
-        "lineNumber": 34,
+        "lineNumber": 39,
         "line": "*/"
       },
       {
-        "lineNumber": 35,
+        "lineNumber": 40,
         "line": "function generateSuggestions(query, c1_latitude, c1_longtitude){"
       }
     ],
@@ -250,47 +186,144 @@
     ]
   },
   {
+    "name": "getGeocodeCertainty",
+    "filePath": "src/server/lib/suggestions.js",
+    "lines": [
+      {
+        "lineNumber": 89,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 90,
+        "line": " * Geocode Localization for extra certainty using API"
+      },
+      {
+        "lineNumber": 91,
+        "line": " *"
+      },
+      {
+        "lineNumber": 92,
+        "line": " * @param {Double} c1_latitude The latitude of point 1."
+      },
+      {
+        "lineNumber": 93,
+        "line": " * @param {Double} c1_longitude The longitude of point 1."
+      },
+      {
+        "lineNumber": 94,
+        "line": " * @return {String} Potential guess of the city from the coordinates "
+      },
+      {
+        "lineNumber": 95,
+        "line": "*/"
+      },
+      {
+        "lineNumber": 96,
+        "line": "function getGeocodeCertainty(c1_latitude, c1_longtitude){"
+      }
+    ],
+    "codeParams": [
+      "c1_latitude",
+      "c1_longtitude"
+    ],
+    "docParams": [
+      "c1_latitude",
+      "c1_longitude"
+    ]
+  },
+  {
+    "name": "getPopulationPercentage",
+    "filePath": "src/server/lib/suggestions.js",
+    "lines": [
+      {
+        "lineNumber": 75,
+        "line": "/**"
+      },
+      {
+        "lineNumber": 76,
+        "line": " * Calculate the percentage of the population of the city vs total population of all cities in the csv "
+      },
+      {
+        "lineNumber": 77,
+        "line": " *"
+      },
+      {
+        "lineNumber": 78,
+        "line": " * @param {Integer}population Population count of the city."
+      },
+      {
+        "lineNumber": 79,
+        "line": " * @param {String}country Country of the city."
+      },
+      {
+        "lineNumber": 80,
+        "line": " * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv."
+      },
+      {
+        "lineNumber": 81,
+        "line": " * @return {Double} between 0-1 percentage of population "
+      },
+      {
+        "lineNumber": 82,
+        "line": "*/"
+      },
+      {
+        "lineNumber": 83,
+        "line": "function getPopulationPercentage(population, TOTAL_POPULATION){"
+      }
+    ],
+    "codeParams": [
+      "population",
+      "TOTAL_POPULATION"
+    ],
+    "docParams": [
+      "{Integer}population",
+      "{String}country",
+      "TOTAL_POPULATION"
+    ]
+  },
+  {
     "name": "calculateDistance",
     "filePath": "src/server/lib/suggestions.js",
     "lines": [
       {
-        "lineNumber": 39,
+        "lineNumber": 44,
         "line": "/**"
       },
       {
-        "lineNumber": 40,
+        "lineNumber": 45,
         "line": " * Calculate the distance between 2 lat long coordinates "
       },
       {
-        "lineNumber": 41,
+        "lineNumber": 46,
         "line": " *"
       },
       {
-        "lineNumber": 42,
+        "lineNumber": 47,
         "line": " * @param {Double} c1_latitude The latitude of point 1."
       },
       {
-        "lineNumber": 43,
+        "lineNumber": 48,
         "line": " * @param {Double} c1_longitude The longitude of point 1."
       },
       {
-        "lineNumber": 44,
+        "lineNumber": 49,
         "line": " * @param {Double} c2_latitude The latitude of point 2."
       },
       {
-        "lineNumber": 45,
+        "lineNumber": 50,
         "line": " * @param {Double} c2_longitude The longitude of point 2."
       },
       {
-        "lineNumber": 46,
+        "lineNumber": 51,
         "line": " * @return {Integer} distance in kms between both points"
       },
       {
-        "lineNumber": 47,
+        "lineNumber": 52,
         "line": "*/"
       },
       {
-        "lineNumber": 48,
+        "lineNumber": 53,
         "line": "function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitude){"
       }
     ],
@@ -308,101 +341,130 @@
     ]
   },
   {
-    "name": "getPopulationPercentage",
+    "name": "getSuggestionScore",
     "filePath": "src/server/lib/suggestions.js",
     "lines": [
       {
-        "lineNumber": 66,
+        "lineNumber": 3,
         "line": "/**"
       },
       {
-        "lineNumber": 67,
-        "line": " * Calculate the percentage of the population of the city vs total population of all cities in the csv "
+        "lineNumber": 4,
+        "line": " * Compute a certainty score for the potential match of query."
       },
       {
-        "lineNumber": 68,
+        "lineNumber": 5,
         "line": " *"
       },
       {
-        "lineNumber": 69,
-        "line": " * @param {Integer}population Population count of the city."
+        "lineNumber": 6,
+        "line": " * @param {String} city The potential city."
       },
       {
-        "lineNumber": 70,
-        "line": " * @param {String}country Country of the city."
+        "lineNumber": 7,
+        "line": " * @param {Double} c1_latitude The latitude in the search."
       },
       {
-        "lineNumber": 71,
-        "line": " * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv."
+        "lineNumber": 8,
+        "line": " * @param {Double} c1_longitude The longitude in the search."
       },
       {
-        "lineNumber": 72,
-        "line": " * @return {Double} between 0-1 percentage of population "
+        "lineNumber": 9,
+        "line": " * @param {Double} c2_latitude The latitude of the potential match."
       },
       {
-        "lineNumber": 73,
+        "lineNumber": 10,
+        "line": " * @param {Double} c2_longitude The The longitude of the potential match."
+      },
+      {
+        "lineNumber": 11,
+        "line": " * @return {Integer} between 0-1 to compute certainty."
+      },
+      {
+        "lineNumber": 12,
         "line": "*/"
       },
       {
-        "lineNumber": 74,
-        "line": "function getPopulationPercentage(population, country, TOTAL_POPULATION){"
+        "lineNumber": 13,
+        "line": "function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){"
       }
     ],
     "codeParams": [
-      "population",
-      "country",
-      "TOTAL_POPULATION"
+      "city",
+      "c1_latitude",
+      "c1_longtitude",
+      "c2_latitude",
+      "c2_longtitude",
+      "population"
     ],
     "docParams": [
-      "{Integer}population",
-      "{String}country",
-      "TOTAL_POPULATION"
+      "city",
+      "c1_latitude",
+      "c1_longitude",
+      "c2_latitude",
+      "c2_longitude"
     ]
   },
   {
-    "name": "getGeocodeCertainty",
-    "filePath": "src/server/lib/suggestions.js",
+    "name": "CityService.addCity",
+    "filePath": "src/server/services/cityService.js",
     "lines": [
       {
-        "lineNumber": 80,
-        "line": "/**"
+        "lineNumber": 23,
+        "line": "    /**"
       },
       {
-        "lineNumber": 81,
-        "line": " * Geocode Localization for extra certainty using API"
+        "lineNumber": 24,
+        "line": "     * Function for adding a new city in the cities table"
       },
       {
-        "lineNumber": 82,
-        "line": " *"
+        "lineNumber": 25,
+        "line": "     * @param {String} name The city name"
       },
       {
-        "lineNumber": 83,
-        "line": " * @param {Double} c1_latitude The latitude of point 1."
+        "lineNumber": 26,
+        "line": "     * @param {String} country The country the city is in (US or CA)"
       },
       {
-        "lineNumber": 84,
-        "line": " * @param {Double} c1_longitude The longitude of point 1."
+        "lineNumber": 27,
+        "line": "     * @param {String} admin1 The 2 character state or province code "
       },
       {
-        "lineNumber": 85,
-        "line": " * @return {String} Potential guess of the city from the coordinates "
+        "lineNumber": 28,
+        "line": "     * @param {Float} latitude The latitude in the search."
       },
       {
-        "lineNumber": 86,
-        "line": "*/"
+        "lineNumber": 29,
+        "line": "     * @param {Float} longitude The longitude in the search."
       },
       {
-        "lineNumber": 87,
-        "line": "function getGeocodeCertainty(c1_latitude, c1_longtitude){"
+        "lineNumber": 30,
+        "line": "     * @param {Double} population The population of the city."
+      },
+      {
+        "lineNumber": 31,
+        "line": "    */"
+      },
+      {
+        "lineNumber": 32,
+        "line": "    static async addCity(name, country, admin1, longitude, latitude, population){"
       }
     ],
     "codeParams": [
-      "c1_latitude",
-      "c1_longtitude"
+      "name",
+      "country",
+      "admin1",
+      "longitude",
+      "latitude",
+      "population"
     ],
     "docParams": [
-      "c1_latitude",
-      "c1_longitude"
+      "name",
+      "country",
+      "admin1",
+      "latitude",
+      "longitude",
+      "population"
     ]
   }
 ]

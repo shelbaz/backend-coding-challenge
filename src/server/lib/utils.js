@@ -1,3 +1,4 @@
+
 export default class Util {
     constructor() {
       this.statusCode = null;

@@ -1,14 +1,32 @@
 window.esdocSearchIndex = [
   [
-    "backend-coding-challenge/src/server/controllers/city.js~cities",
-    "class/src/server/controllers/city.js~Cities.html",
-    "<span>Cities</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/controllers/city.js</span>",
+    "backend-coding-challenge/src/server/controllers/citycontroller.js~citycontroller",
+    "class/src/server/controllers/cityController.js~CityController.html",
+    "<span>CityController</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/controllers/cityController.js</span>",
     "class"
   ],
   [
-    "backend-coding-challenge/src/server/controllers/city.js~admincodetozip",
+    "backend-coding-challenge/src/server/services/cityservice.js~cityservice",
+    "class/src/server/services/cityService.js~CityService.html",
+    "<span>CityService</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/services/cityService.js</span>",
+    "class"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/utils.js~util",
+    "class/src/server/lib/utils.js~Util.html",
+    "<span>Util</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/utils.js</span>",
+    "class"
+  ],
+  [
+    "backend-coding-challenge/src/server/controllers/citycontroller.js~admincodetozip",
     "function/index.html#static-function-adminCodeToZip",
-    "<span>adminCodeToZip</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/controllers/city.js</span>",
+    "<span>adminCodeToZip</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/controllers/cityController.js</span>",
+    "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/suggestions.js~calculatedistance",
+    "function/index.html#static-function-calculateDistance",
+    "<span>calculateDistance</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/suggestions.js</span>",
     "function"
   ],
   [
@@ -16,6 +34,36 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-cities",
     "<span>cities</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/models/cities.js</span>",
     "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/suggestions.js~getgeocodecertainty",
+    "function/index.html#static-function-getGeocodeCertainty",
+    "<span>getGeocodeCertainty</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/suggestions.js</span>",
+    "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/suggestions.js~getpopulationpercentage",
+    "function/index.html#static-function-getPopulationPercentage",
+    "<span>getPopulationPercentage</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/suggestions.js</span>",
+    "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/suggestions.js~getsuggestionscore",
+    "function/index.html#static-function-getSuggestionScore",
+    "<span>getSuggestionScore</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/suggestions.js</span>",
+    "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/logger.js~logformatfactory",
+    "function/index.html#static-function-logFormatFactory",
+    "<span>logFormatFactory</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/logger.js</span>",
+    "function"
+  ],
+  [
+    "backend-coding-challenge/src/server/lib/logger.js~logger",
+    "variable/index.html#static-variable-logger",
+    "<span>logger</span> <span class=\"search-result-import-path\">backend-coding-challenge/src/server/lib/logger.js</span>",
+    "variable"
   ],
   [
     "backend-coding-challenge/src/server/seeders/seed.js~seed",
@@ -312,34 +360,40 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/server/controllers/city.js",
-    "file/src/server/controllers/city.js.html",
-    "src/server/controllers/city.js",
+    "src/server/controllers/citycontroller.js",
+    "file/src/server/controllers/cityController.js.html",
+    "src/server/controllers/cityController.js",
     "file"
   ],
   [
-    "src/server/controllers/city.js~cities.create",
-    "class/src/server/controllers/city.js~Cities.html#static-method-create",
-    "src/server/controllers/city.js~Cities.create",
+    "src/server/controllers/citycontroller.js~citycontroller.create",
+    "class/src/server/controllers/cityController.js~CityController.html#static-method-create",
+    "src/server/controllers/cityController.js~CityController.create",
     "method"
   ],
   [
-    "src/server/controllers/city.js~cities.getall",
-    "class/src/server/controllers/city.js~Cities.html#static-method-getAll",
-    "src/server/controllers/city.js~Cities.getAll",
+    "src/server/controllers/citycontroller.js~citycontroller.getall",
+    "class/src/server/controllers/cityController.js~CityController.html#static-method-getAll",
+    "src/server/controllers/cityController.js~CityController.getAll",
     "method"
   ],
   [
-    "src/server/controllers/city.js~cities.getmatches",
-    "class/src/server/controllers/city.js~Cities.html#static-method-getMatches",
-    "src/server/controllers/city.js~Cities.getMatches",
+    "src/server/controllers/citycontroller.js~citycontroller.getmatches",
+    "class/src/server/controllers/cityController.js~CityController.html#static-method-getMatches",
+    "src/server/controllers/cityController.js~CityController.getMatches",
     "method"
   ],
   [
-    "src/server/controllers/city.js~cities.getsome",
-    "class/src/server/controllers/city.js~Cities.html#static-method-getSome",
-    "src/server/controllers/city.js~Cities.getSome",
+    "src/server/controllers/citycontroller.js~citycontroller.getsome",
+    "class/src/server/controllers/cityController.js~CityController.html#static-method-getSome",
+    "src/server/controllers/cityController.js~CityController.getSome",
     "method"
+  ],
+  [
+    "src/server/lib/logger.js",
+    "file/src/server/lib/logger.js.html",
+    "src/server/lib/logger.js",
+    "file"
   ],
   [
     "src/server/lib/suggestions.js",
@@ -348,9 +402,75 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/server/lib/utils.js",
+    "file/src/server/lib/utils.js.html",
+    "src/server/lib/utils.js",
+    "file"
+  ],
+  [
+    "src/server/lib/utils.js~util#constructor",
+    "class/src/server/lib/utils.js~Util.html#instance-constructor-constructor",
+    "src/server/lib/utils.js~Util#constructor",
+    "method"
+  ],
+  [
+    "src/server/lib/utils.js~util#data",
+    "class/src/server/lib/utils.js~Util.html#instance-member-data",
+    "src/server/lib/utils.js~Util#data",
+    "member"
+  ],
+  [
+    "src/server/lib/utils.js~util#message",
+    "class/src/server/lib/utils.js~Util.html#instance-member-message",
+    "src/server/lib/utils.js~Util#message",
+    "member"
+  ],
+  [
+    "src/server/lib/utils.js~util#send",
+    "class/src/server/lib/utils.js~Util.html#instance-method-send",
+    "src/server/lib/utils.js~Util#send",
+    "method"
+  ],
+  [
+    "src/server/lib/utils.js~util#seterror",
+    "class/src/server/lib/utils.js~Util.html#instance-method-setError",
+    "src/server/lib/utils.js~Util#setError",
+    "method"
+  ],
+  [
+    "src/server/lib/utils.js~util#setsuccess",
+    "class/src/server/lib/utils.js~Util.html#instance-method-setSuccess",
+    "src/server/lib/utils.js~Util#setSuccess",
+    "method"
+  ],
+  [
+    "src/server/lib/utils.js~util#statuscode",
+    "class/src/server/lib/utils.js~Util.html#instance-member-statusCode",
+    "src/server/lib/utils.js~Util#statusCode",
+    "member"
+  ],
+  [
+    "src/server/lib/utils.js~util#type",
+    "class/src/server/lib/utils.js~Util.html#instance-member-type",
+    "src/server/lib/utils.js~Util#type",
+    "member"
+  ],
+  [
+    "src/server/migrations/20190804002545-create-pg_trgm.js",
+    "file/src/server/migrations/20190804002545-create-pg_trgm.js.html",
+    "src/server/migrations/20190804002545-create-pg_trgm.js",
+    "file"
+  ],
+  [
     "src/server/migrations/20190804002546-create-cities.js",
     "file/src/server/migrations/20190804002546-create-cities.js.html",
     "src/server/migrations/20190804002546-create-cities.js",
+    "file"
+  ],
+  [
+    "src/server/migrations/20190804002546-create-index.js",
+    "file/src/server/migrations/20190804002546-create-index.js.html",
+    "src/server/migrations/20190804002546-create-index.js",
     "file"
   ],
   [
@@ -376,5 +496,29 @@ window.esdocSearchIndex = [
     "file/src/server/seeders/seed.js.html",
     "src/server/seeders/seed.js",
     "file"
+  ],
+  [
+    "src/server/services/cityservice.js",
+    "file/src/server/services/cityService.js.html",
+    "src/server/services/cityService.js",
+    "file"
+  ],
+  [
+    "src/server/services/cityservice.js~cityservice.addcity",
+    "class/src/server/services/cityService.js~CityService.html#static-method-addCity",
+    "src/server/services/cityService.js~CityService.addCity",
+    "method"
+  ],
+  [
+    "src/server/services/cityservice.js~cityservice.findacity",
+    "class/src/server/services/cityService.js~CityService.html#static-method-findACity",
+    "src/server/services/cityService.js~CityService.findACity",
+    "method"
+  ],
+  [
+    "src/server/services/cityservice.js~cityservice.getallcities",
+    "class/src/server/services/cityService.js~CityService.html#static-method-getAllCities",
+    "src/server/services/cityService.js~CityService.getAllCities",
+    "method"
   ]
 ]

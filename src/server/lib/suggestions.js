@@ -9,7 +9,7 @@ const TOTAL_POPULATION = 240097546;
  * @param {Double} c1_longitude The longitude in the search.
  * @param {Double} c2_latitude The latitude of the potential match.
  * @param {Double} c2_longitude The The longitude of the potential match.
- * @return {Integer} between 0-1 to compute certainty.
+ * @return {Integer}totalScore between 0-1 to compute certainty.
 */
 function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){
     let equalWeight = 1/2; // a third weight each

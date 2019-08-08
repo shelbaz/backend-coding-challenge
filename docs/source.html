@@ -29,15 +29,23 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-lib">server/lib</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-services">server/services</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">14/38</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">18/55</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -53,29 +61,57 @@
   <tbody>
     
   <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/app.js.html#errorLines=11,14,15,16,17,9">src/app.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/app.js.html#errorLines=10,11,14,15,16,17">src/app.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">33 %</span><span data-ice="coverageCount" class="coverage-count">3/9</span></td>
-      <td style="display: none;" data-ice="size">2554 byte</td>
-      <td style="display: none;" data-ice="lines">111</td>
-      <td style="display: none;" data-ice="updated">2019-08-03 05:43:47 (UTC)</td>
+      <td style="display: none;" data-ice="size">2739 byte</td>
+      <td style="display: none;" data-ice="lines">121</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 09:18:18 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/server/controllers/city.js.html#errorLines=1,2,9">src/server/controllers/city.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span>
+      <td data-ice="filePath"><span><a href="file/src/server/controllers/cityController.js.html#errorLines=12,6">src/server/controllers/cityController.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span>
 <span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></td>
-      <td class="coverage"><span data-ice="coverage">62 %</span><span data-ice="coverageCount" class="coverage-count">5/8</span></td>
-      <td style="display: none;" data-ice="size">2801 byte</td>
-      <td style="display: none;" data-ice="lines">98</td>
-      <td style="display: none;" data-ice="updated">2019-08-03 04:36:35 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">71 %</span><span data-ice="coverageCount" class="coverage-count">5/7</span></td>
+      <td style="display: none;" data-ice="size">4227 byte</td>
+      <td style="display: none;" data-ice="lines">121</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 08:27:45 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/server/lib/suggestions.js.html#errorLines=2,4,5,6">src/server/lib/suggestions.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/server/lib/logger.js.html#errorLines=10,14,3,5">src/server/lib/logger.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span>
+<span><a href="variable/index.html#static-variable-logger">logger</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/4</span></td>
+      <td style="display: none;" data-ice="size">593 byte</td>
+      <td style="display: none;" data-ice="lines">23</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 04:22:56 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/server/lib/suggestions.js.html#errorLines=1,2">src/server/lib/suggestions.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span>
+<span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span>
+<span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span>
+<span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></td>
+      <td class="coverage"><span data-ice="coverage">71 %</span><span data-ice="coverageCount" class="coverage-count">5/7</span></td>
+      <td style="display: none;" data-ice="size">4520 byte</td>
+      <td style="display: none;" data-ice="lines">115</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 08:44:42 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/server/lib/utils.js.html#errorLines=10,17,2,23,3,4,5,6,7">src/server/lib/utils.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></td>
+      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/9</span></td>
+      <td style="display: none;" data-ice="size">834 byte</td>
+      <td style="display: none;" data-ice="lines">37</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 13:46:49 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/server/migrations/20190804002545-create-pg_trgm.js.html">src/server/migrations/20190804002545-create-pg_trgm.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
-      <td class="coverage"><span data-ice="coverage">55 %</span><span data-ice="coverageCount" class="coverage-count">5/9</span></td>
-      <td style="display: none;" data-ice="size">3759 byte</td>
-      <td style="display: none;" data-ice="lines">103</td>
-      <td style="display: none;" data-ice="updated">2019-08-03 04:29:15 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">196 byte</td>
+      <td style="display: none;" data-ice="lines">6</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 09:23:22 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/server/migrations/20190804002546-create-cities.js.html">src/server/migrations/20190804002546-create-cities.js</a></span></td>
@@ -83,7 +119,15 @@
       <td class="coverage"><span data-ice="coverage">-</span></td>
       <td style="display: none;" data-ice="size">1005 byte</td>
       <td style="display: none;" data-ice="lines">46</td>
-      <td style="display: none;" data-ice="updated">2019-08-02 17:59:22 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 06:30:42 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/server/migrations/20190804002546-create-index.js.html">src/server/migrations/20190804002546-create-index.js</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">272 byte</td>
+      <td style="display: none;" data-ice="lines">8</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 06:30:51 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/server/models/cities.js.html#errorLines=1">src/server/models/cities.js</a></span></td>
@@ -105,17 +149,25 @@
       <td data-ice="filePath"><span><a href="file/src/server/routes.js.html">src/server/routes.js</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">870 byte</td>
-      <td style="display: none;" data-ice="lines">33</td>
-      <td style="display: none;" data-ice="updated">2019-08-03 05:43:07 (UTC)</td>
+      <td style="display: none;" data-ice="size">571 byte</td>
+      <td style="display: none;" data-ice="lines">17</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 08:49:40 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/server/seeders/seed.js.html#errorLines=3,4,5">src/server/seeders/seed.js</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/server/seeders/seed.js.html#errorLines=4,5,6">src/server/seeders/seed.js</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-seed">seed</a></span></td>
       <td class="coverage"><span data-ice="coverage">25 %</span><span data-ice="coverageCount" class="coverage-count">1/4</span></td>
-      <td style="display: none;" data-ice="size">1125 byte</td>
-      <td style="display: none;" data-ice="lines">39</td>
-      <td style="display: none;" data-ice="updated">2019-08-03 05:40:22 (UTC)</td>
+      <td style="display: none;" data-ice="size">1167 byte</td>
+      <td style="display: none;" data-ice="lines">41</td>
+      <td style="display: none;" data-ice="updated">2019-08-04 20:12:52 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/server/services/cityService.js.html#errorLines=1,2,5">src/server/services/cityService.js</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></td>
+      <td class="coverage"><span data-ice="coverage">57 %</span><span data-ice="coverageCount" class="coverage-count">4/7</span></td>
+      <td style="display: none;" data-ice="size">2130 byte</td>
+      <td style="display: none;" data-ice="lines">65</td>
+      <td style="display: none;" data-ice="updated">2019-08-05 13:56:31 (UTC)</td>
     </tr>
 </tbody>
 </table>

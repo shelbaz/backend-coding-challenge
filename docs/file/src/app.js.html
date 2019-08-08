@@ -29,10 +29,18 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/city.js~Cities.html">Cities</a></span></span></li>
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-controllers">server/controllers</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/controllers/cityController.js~CityController.html">CityController</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-adminCodeToZip">adminCodeToZip</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-lib">server/lib</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/lib/utils.js~Util.html">Util</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-logFormatFactory">logFormatFactory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calculateDistance">calculateDistance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getGeocodeCertainty">getGeocodeCertainty</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getPopulationPercentage">getPopulationPercentage</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSuggestionScore">getSuggestionScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-logger">logger</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-models">server/models</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cities">cities</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-seeders">server/seeders</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-seed">seed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#server-services">server/services</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/server/services/cityService.js~CityService.html">CityService</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -40,14 +48,14 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/app.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import routes from &apos;./server/routes&apos;;
 import express from &quot;express&quot;;
+import expressWinston from &quot;express-winston&quot;;
+import {logger} from &apos;./server/lib/logger&apos;
 import http from &quot;http&quot;;
-import logger from &quot;morgan&quot;;
 import &apos;ejs&apos;;
 import sassMiddleware from &apos;node-sass-middleware&apos;;
 import cookieParser from &quot;cookie-parser&quot;;
 import bodyParser from &quot;body-parser&quot;;
 const path = require(&apos;path&apos;);
-import &apos;babel-polyfill&apos;;
 var models = require(&quot;../src/server/models&quot;);
 import seed from &apos;./server/seeders/seed&apos;
 
@@ -56,7 +64,7 @@ const port = normalizePort(process.env.PORT || 8080);
 const app = express(); // setup express application
 const server = http.createServer(app);
 
-app.use(logger(&apos;dev&apos;)); // log requests to the console
+app.use(expressWinston.logger(logger)); // log requests to the console
 
 // Parse incoming requests data
 app.use(bodyParser.json());
@@ -82,12 +90,17 @@ app.use(routes);
 models.sequelize.sync({force: true}).then(function () {
   server.listen(port, hostname, () =&gt; {
     seed(); // seed the db with csv
-    console.log(`Server running at http://${hostname}:${port}/`);
+    logger.log({
+      level: &apos;info&apos;,
+      message: `Server running at http://${hostname}:${port}/`
+    });
   });    
 });
 
 server.on(&apos;error&apos;, onError);
 server.on(&apos;listening&apos;, onListening);
+app.use(expressWinston.errorLogger(logger));
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -146,8 +159,13 @@ function onListening() {
   var bind = typeof addr === &apos;string&apos;
     ? &apos;pipe &apos; + addr
     : &apos;port &apos; + addr.port;
-  logger(&apos;Listening on &apos; + bind);
+  logger.info({
+    level: &apos;info&apos;,
+    message: &apos;Listening on &apos; + bind
+  });
 }
+
+
 
 </code></pre>
 

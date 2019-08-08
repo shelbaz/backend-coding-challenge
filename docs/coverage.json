@@ -1,13 +1,13 @@
 {
-  "coverage": "36.84%",
-  "expectCount": 38,
-  "actualCount": 14,
+  "coverage": "32.72%",
+  "expectCount": 55,
+  "actualCount": 18,
   "files": {
     "src/app.js": {
       "expectCount": 9,
       "actualCount": 3,
       "undocumentLines": [
-        9,
+        10,
         11,
         14,
         15,
@@ -15,23 +15,45 @@
         17
       ]
     },
-    "src/server/controllers/city.js": {
-      "expectCount": 8,
+    "src/server/controllers/cityController.js": {
+      "expectCount": 7,
       "actualCount": 5,
       "undocumentLines": [
-        1,
-        2,
-        9
+        6,
+        12
+      ]
+    },
+    "src/server/lib/logger.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5,
+        10,
+        14
       ]
     },
     "src/server/lib/suggestions.js": {
-      "expectCount": 9,
+      "expectCount": 7,
       "actualCount": 5,
       "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "src/server/lib/utils.js": {
+      "expectCount": 9,
+      "actualCount": 0,
+      "undocumentLines": [
         2,
+        3,
         4,
         5,
-        6
+        6,
+        7,
+        10,
+        17,
+        23
       ]
     },
     "src/server/models/cities.js": {
@@ -58,8 +80,17 @@
       "expectCount": 4,
       "actualCount": 1,
       "undocumentLines": [
-        3,
         4,
+        5,
+        6
+      ]
+    },
+    "src/server/services/cityService.js": {
+      "expectCount": 7,
+      "actualCount": 4,
+      "undocumentLines": [
+        1,
+        2,
         5
       ]
     }

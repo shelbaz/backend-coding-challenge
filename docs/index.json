@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/app.js",
-    "content": "import routes from './server/routes';\nimport express from \"express\";\nimport http from \"http\";\nimport logger from \"morgan\";\nimport 'ejs';\nimport sassMiddleware from 'node-sass-middleware';\nimport cookieParser from \"cookie-parser\";\nimport bodyParser from \"body-parser\";\nconst path = require('path');\nimport 'babel-polyfill';\nvar models = require(\"../src/server/models\");\nimport seed from './server/seeders/seed'\n\nconst hostname = '127.0.0.1';\nconst port = normalizePort(process.env.PORT || 8080);\nconst app = express(); // setup express application\nconst server = http.createServer(app);\n\napp.use(logger('dev')); // log requests to the console\n\n// Parse incoming requests data\napp.use(bodyParser.json());\napp.use(bodyParser.urlencoded({ extended: false }));\n\n// view engine setup\napp.set('views', path.join(__dirname, 'views'));\napp.set('view engine', 'ejs');\n\napp.use(cookieParser());\napp.use(sassMiddleware({\n  src: path.join(__dirname, 'public'),\n  dest: path.join(__dirname, 'public'),\n  indentedSyntax: true, // true = .sass and false = .scss\n  sourceMap: true\n}));\napp.use(express.static(path.join(__dirname, 'public')));\n\napp.use(routes);\n\n\n// Automatically create the database with the models\nmodels.sequelize.sync({force: true}).then(function () {\n  server.listen(port, hostname, () => {\n    seed(); // seed the db with csv\n    console.log(`Server running at http://${hostname}:${port}/`);\n  });    \n});\n\nserver.on('error', onError);\nserver.on('listening', onListening);\n\n/**\n * Normalize a port into a number, string, or false.\n */\n\nfunction normalizePort(val) {\n  var port = parseInt(val, 10);\n\n  if (isNaN(port)) {\n    // named pipe\n    return val;\n  }\n\n  if (port >= 0) {\n    // port number\n    return port;\n  }\n\n  return false;\n}\n\n/**\n * Event listener for HTTP server \"error\" event.\n */\n\nfunction onError(error) {\n  if (error.syscall !== 'listen') {\n    throw error;\n  }\n\n  var bind = typeof port === 'string'\n    ? 'Pipe ' + port\n    : 'Port ' + port;\n\n  // handle specific listen errors with friendly messages\n  switch (error.code) {\n    case 'EACCES':\n      console.error(bind + ' requires elevated privileges');\n      process.exit(1);\n      break;\n    case 'EADDRINUSE':\n      console.error(bind + ' is already in use');\n      process.exit(1);\n      break;\n    default:\n      throw error;\n  }\n}\n\n/**\n * Event listener for HTTP server \"listening\" event.\n */\n\nfunction onListening() {\n  var addr = server.address();\n  var bind = typeof addr === 'string'\n    ? 'pipe ' + addr\n    : 'port ' + addr.port;\n  logger('Listening on ' + bind);\n}\n\n",
+    "content": "import routes from './server/routes';\nimport express from \"express\";\nimport expressWinston from \"express-winston\";\nimport {logger} from './server/lib/logger'\nimport http from \"http\";\nimport 'ejs';\nimport sassMiddleware from 'node-sass-middleware';\nimport cookieParser from \"cookie-parser\";\nimport bodyParser from \"body-parser\";\nconst path = require('path');\nvar models = require(\"../src/server/models\");\nimport seed from './server/seeders/seed'\n\nconst hostname = '127.0.0.1';\nconst port = normalizePort(process.env.PORT || 8080);\nconst app = express(); // setup express application\nconst server = http.createServer(app);\n\napp.use(expressWinston.logger(logger)); // log requests to the console\n\n// Parse incoming requests data\napp.use(bodyParser.json());\napp.use(bodyParser.urlencoded({ extended: false }));\n\n// view engine setup\napp.set('views', path.join(__dirname, 'views'));\napp.set('view engine', 'ejs');\n\napp.use(cookieParser());\napp.use(sassMiddleware({\n  src: path.join(__dirname, 'public'),\n  dest: path.join(__dirname, 'public'),\n  indentedSyntax: true, // true = .sass and false = .scss\n  sourceMap: true\n}));\napp.use(express.static(path.join(__dirname, 'public')));\n\napp.use(routes);\n\n\n// Automatically create the database with the models\nmodels.sequelize.sync({force: true}).then(function () {\n  server.listen(port, hostname, () => {\n    seed(); // seed the db with csv\n    logger.log({\n      level: 'info',\n      message: `Server running at http://${hostname}:${port}/`\n    });\n  });    \n});\n\nserver.on('error', onError);\nserver.on('listening', onListening);\napp.use(expressWinston.errorLogger(logger));\n\n\n/**\n * Normalize a port into a number, string, or false.\n */\n\nfunction normalizePort(val) {\n  var port = parseInt(val, 10);\n\n  if (isNaN(port)) {\n    // named pipe\n    return val;\n  }\n\n  if (port >= 0) {\n    // port number\n    return port;\n  }\n\n  return false;\n}\n\n/**\n * Event listener for HTTP server \"error\" event.\n */\n\nfunction onError(error) {\n  if (error.syscall !== 'listen') {\n    throw error;\n  }\n\n  var bind = typeof port === 'string'\n    ? 'Pipe ' + port\n    : 'Port ' + port;\n\n  // handle specific listen errors with friendly messages\n  switch (error.code) {\n    case 'EACCES':\n      console.error(bind + ' requires elevated privileges');\n      process.exit(1);\n      break;\n    case 'EADDRINUSE':\n      console.error(bind + ' is already in use');\n      process.exit(1);\n      break;\n    default:\n      throw error;\n  }\n}\n\n/**\n * Event listener for HTTP server \"listening\" event.\n */\n\nfunction onListening() {\n  var addr = server.address();\n  var bind = typeof addr === 'string'\n    ? 'pipe ' + addr\n    : 'port ' + addr.port;\n  logger.info({\n    level: 'info',\n    message: 'Listening on ' + bind\n  });\n}\n\n\n\n",
     "static": true,
     "longname": "/Users/shawnelbaz/backend-coding-challenge/src/app.js",
     "access": "public",
@@ -586,7 +586,7 @@
     "importPath": "backend-coding-challenge/src/app.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 10,
     "undocument": true,
     "type": {
       "types": [
@@ -714,7 +714,7 @@
     "importPath": "backend-coding-challenge/src/app.js",
     "importStyle": null,
     "description": "Normalize a port into a number, string, or false.",
-    "lineNumber": 56,
+    "lineNumber": 61,
     "params": [
       {
         "name": "val",
@@ -744,7 +744,7 @@
     "importPath": "backend-coding-challenge/src/app.js",
     "importStyle": null,
     "description": "Event listener for HTTP server \"error\" event.",
-    "lineNumber": 76,
+    "lineNumber": 81,
     "params": [
       {
         "name": "error",
@@ -770,7 +770,7 @@
     "importPath": "backend-coding-challenge/src/app.js",
     "importStyle": null,
     "description": "Event listener for HTTP server \"listening\" event.",
-    "lineNumber": 104,
+    "lineNumber": 109,
     "params": [],
     "return": null,
     "ignore": true
@@ -778,10 +778,10 @@
   {
     "__docId__": 58,
     "kind": "file",
-    "name": "src/server/controllers/city.js",
-    "content": "var db = require('../models/index');\nconst City = db.sequelize.import('cities', require('../models/cities'));\n\n/**\n* City class database helper methods\n*/\nclass Cities {\n  \n  static async create(req, res) {\n    const { name, country, admin1, longitude, latitude, population } = req.body\n    return await City\n      .create({\n        name,\n        country,\n        admin1,\n        longitude,\n        latitude,\n        population\n      })\n      .then(city => res.status(201).send({\n        message: `Your city ${name} has been created successfully `\n      }))\n    }\n\n    /**\n     * Get only specific attributes of all rows.\n     *\n     * @param {Request} req.arr The array of attributes selected \n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getSome(req, res){\n      return await City.findAll({attributes: { include: req.body.arr }}) \n    }\n\n     /**\n     * Get all attributes of all rows.\n     *\n     * @param {Request} req Request of server\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getAll(req, res){\n      return await City.findAll({});\n    }\n    \n    /**\n     * Get partial string match of cities in database and return all attributes of matches\n     *\n     * @param {String} req.body.query Query string\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} matches of cities\n    */\n    static async getMatches(req, res){\n      let lookupValue = req.body.query.toLowerCase();\n\n      City.findAll({\n          attributes: {include: ['name', 'country', 'longitude', 'latitude']},\n          limit: 5,\n          where: {\n              asset_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('asset_name')), 'LIKE', '%' + lookupValue + '%')\n          }\n      }).then(function(assets){\n          return response.json({\n              msg: '** Matches **',\n              assets: assets\n          });\n      }).catch(function(error){\n          console.log(error);\n      });\n    }\n}\n\n/**\n * Convert numeric province code to 2 letter code if Canada\n *\n * @param {String} Integer string of province code\n * @return {String} of province code (CA) or state code (US)\n*/\nfunction adminCodeToZip(adminCode){\n    switch(adminCode){\n        case '01': return 'AB';\n        case '02': return 'BC';\n        case '03': return 'MB';\n        case '04': return 'NB';\n        case '05': return 'NL';\n        case '07': return 'NS';\n        case '08': return 'ON';\n        case '09': return 'PE';\n        case '10': return 'QC';\n        case '11': return 'SK';\n        case '12': return 'YT';\n        case '13': return 'NT';\n        case '14': return 'NU';\n        default: return adminCode;\n    }\n}\n\nexport {Cities, adminCodeToZip}",
+    "name": "src/server/controllers/cityController.js",
+    "content": "import Util from '../lib/utils';\nimport CityService from '../services/cityService';\nimport {logger} from '../lib/logger';\nimport {getSuggestionScore} from '../lib/suggestions';\n\nconst util = new Util();\n\n/**\n* City class database helper methods\n*/\nclass CityController {\n  static async create(req, res) {\n      if (!req.body.name || !req.body.country || !req.body.admin1 || !req.body.longitude || !req.body.latitude || !req.body.population) {\n        util.setError(400, 'Incomplete details');\n        return util.send(res);\n      }\n      const { name, country, admin1, longitude, latitude, population } = req.body\n      try {\n        const createdCity = await CityService.addCity(name, country, admin1, longitude, latitude, population);\n        util.setSuccess(201, 'City Added!', createdCity);\n        return util.send(res);\n      } catch (error) {\n        util.setError(400, error.message);\n        return util.send(res);\n      }\n    }\n\n    /**\n     * Get only specific attributes of all rows.\n     *\n     * @param {Request} req.arr The array of attributes selected \n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getSome(req, res){\n      return await City.findAll({attributes: { include: req.body.arr }}) \n    }\n\n     /**\n     * Get all attributes of all rows.\n     *\n     * @param {Request} req Request of server\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} of all cities\n    */\n    static async getAll(req, res){\n      try {\n        const allCities = await CityService.getAllCities();\n        if (allCities.length > 0) {\n          util.setSuccess(200, 'Cities retrieved', allCities);\n        } else {\n          util.setSuccess(200, 'No cities found');\n        }\n        return util.send(res);\n      } catch (error) {\n        util.setError(400, error);\n        return util.send(res);\n      }\n    }\n    \n    /**\n     * Get partial string match of cities in database and return all attributes of matches\n     *\n     * @param {String} req.body.query Query string\n     * @param {Response} res Response of server\n     * @return {Array of {Objects}} matches of cities\n    */\n    static async getMatches(req, res){\n      let lookupValue = req.query.q.toLowerCase();\n      let latitude = req.query.latitude;\n      let longitude = req.query.longitude;\n      logger.log('info', 'city: ' + lookupValue + ' lat: ' + latitude + ' long: ' + longitude);\n\n      const cityMatches = await CityService.findACity(lookupValue);\n      let suggestionsList = {};\n      suggestionsList.suggestions = [];\n      for(let city in cityMatches){\n        let cityAndState = cityMatches[city].name + ', ' + cityMatches[city].admin1;\n        let suggestionsObj = {\n          \"name\": cityAndState + ', ' + cityMatches[city].country,\n          \"latitude\": cityMatches[city].latitude,\n          \"longitude\": cityMatches[city].longitude,\n          \"score\": getSuggestionScore(cityAndState, latitude, longitude, cityMatches[city].lattitude, cityMatches[city].longitude, cityMatches[city].population)\n        };\n        suggestionsList.suggestions.push(suggestionsObj);\n      }\n      console.log('**MATCHES**')\n      console.log(JSON.stringify(suggestionsList));\n      // descending order\n      var sortedList = suggestionsList.suggestions.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));\n      console.log('**sortedList**')\n      console.log(sortedList)\n\n      res.send(sortedList)\n  }\n}\n\n/**\n * Convert numeric province code to 2 letter code if Canada\n *\n * @param {String} Integer string of province code\n * @return {String} of province code (CA) or state code (US- default)\n*/\nfunction adminCodeToZip(adminCode){\n    switch(adminCode){\n        case '01': return 'AB';\n        case '02': return 'BC';\n        case '03': return 'MB';\n        case '04': return 'NB';\n        case '05': return 'NL';\n        case '07': return 'NS';\n        case '08': return 'ON';\n        case '09': return 'PE';\n        case '10': return 'QC';\n        case '11': return 'SK';\n        case '12': return 'YT';\n        case '13': return 'NT';\n        case '14': return 'NU';\n        default: return adminCode;\n    }\n}\nexport {CityController, adminCodeToZip}",
     "static": true,
-    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/controllers/city.js",
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/controllers/cityController.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
@@ -789,72 +789,51 @@
   {
     "__docId__": 59,
     "kind": "variable",
-    "name": "db",
-    "memberof": "src/server/controllers/city.js",
+    "name": "util",
+    "memberof": "src/server/controllers/cityController.js",
     "static": true,
-    "longname": "src/server/controllers/city.js~db",
+    "longname": "src/server/controllers/cityController.js~util",
     "access": "public",
     "export": false,
-    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importPath": "backend-coding-challenge/src/server/controllers/cityController.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 1,
+    "lineNumber": 6,
     "undocument": true,
     "type": {
       "types": [
-        "*"
+        "src/server/lib/utils.js~Util"
       ]
     },
     "ignore": true
   },
   {
     "__docId__": 60,
-    "kind": "variable",
-    "name": "City",
-    "memberof": "src/server/controllers/city.js",
-    "static": true,
-    "longname": "src/server/controllers/city.js~City",
-    "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 2,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 61,
     "kind": "class",
-    "name": "Cities",
-    "memberof": "src/server/controllers/city.js",
+    "name": "CityController",
+    "memberof": "src/server/controllers/cityController.js",
     "static": true,
-    "longname": "src/server/controllers/city.js~Cities",
+    "longname": "src/server/controllers/cityController.js~CityController",
     "access": "public",
     "export": true,
-    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
-    "importStyle": "{Cities}",
+    "importPath": "backend-coding-challenge/src/server/controllers/cityController.js",
+    "importStyle": "{CityController}",
     "description": "City class database helper methods",
-    "lineNumber": 7,
+    "lineNumber": 11,
     "interface": false
   },
   {
-    "__docId__": 62,
+    "__docId__": 61,
     "kind": "method",
     "name": "create",
-    "memberof": "src/server/controllers/city.js~Cities",
+    "memberof": "src/server/controllers/cityController.js~CityController",
     "generator": false,
     "async": true,
     "static": true,
-    "longname": "src/server/controllers/city.js~Cities.create",
+    "longname": "src/server/controllers/cityController.js~CityController.create",
     "access": "public",
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 12,
     "undocument": true,
     "params": [
       {
@@ -877,17 +856,17 @@
     }
   },
   {
-    "__docId__": 63,
+    "__docId__": 62,
     "kind": "method",
     "name": "getSome",
-    "memberof": "src/server/controllers/city.js~Cities",
+    "memberof": "src/server/controllers/cityController.js~CityController",
     "generator": false,
     "async": true,
     "static": true,
-    "longname": "src/server/controllers/city.js~Cities.getSome",
+    "longname": "src/server/controllers/cityController.js~CityController.getSome",
     "access": "public",
     "description": "Get only specific attributes of all rows.",
-    "lineNumber": 32,
+    "lineNumber": 35,
     "params": [
       {
         "nullable": null,
@@ -920,17 +899,17 @@
     }
   },
   {
-    "__docId__": 64,
+    "__docId__": 63,
     "kind": "method",
     "name": "getAll",
-    "memberof": "src/server/controllers/city.js~Cities",
+    "memberof": "src/server/controllers/cityController.js~CityController",
     "generator": false,
     "async": true,
     "static": true,
-    "longname": "src/server/controllers/city.js~Cities.getAll",
+    "longname": "src/server/controllers/cityController.js~CityController.getAll",
     "access": "public",
     "description": "Get all attributes of all rows.",
-    "lineNumber": 43,
+    "lineNumber": 46,
     "params": [
       {
         "nullable": null,
@@ -963,17 +942,17 @@
     }
   },
   {
-    "__docId__": 65,
+    "__docId__": 64,
     "kind": "method",
     "name": "getMatches",
-    "memberof": "src/server/controllers/city.js~Cities",
+    "memberof": "src/server/controllers/cityController.js~CityController",
     "generator": false,
     "async": true,
     "static": true,
-    "longname": "src/server/controllers/city.js~Cities.getMatches",
+    "longname": "src/server/controllers/cityController.js~CityController.getMatches",
     "access": "public",
     "description": "Get partial string match of cities in database and return all attributes of matches",
-    "lineNumber": 54,
+    "lineNumber": 68,
     "params": [
       {
         "nullable": null,
@@ -1006,20 +985,20 @@
     }
   },
   {
-    "__docId__": 66,
+    "__docId__": 65,
     "kind": "function",
     "name": "adminCodeToZip",
-    "memberof": "src/server/controllers/city.js",
+    "memberof": "src/server/controllers/cityController.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/server/controllers/city.js~adminCodeToZip",
+    "longname": "src/server/controllers/cityController.js~adminCodeToZip",
     "access": "public",
     "export": true,
-    "importPath": "backend-coding-challenge/src/server/controllers/city.js",
+    "importPath": "backend-coding-challenge/src/server/controllers/cityController.js",
     "importStyle": "{adminCodeToZip}",
     "description": "Convert numeric province code to 2 letter code if Canada",
-    "lineNumber": 80,
+    "lineNumber": 104,
     "params": [
       {
         "nullable": null,
@@ -1038,33 +1017,84 @@
         "String"
       ],
       "spread": false,
-      "description": "of province code (CA) or state code (US)"
+      "description": "of province code (CA) or state code (US- default)"
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 66,
     "kind": "file",
-    "name": "src/server/lib/suggestions.js",
-    "content": "import {City} from \"../models/cities\"\nvar parseString = require('xml2js').parseString;\n\nconst TOTAL_POPULATION = 240097546;\nconst CANADA = \"CA\";\nconst USA = \"US\";\n\n/**\n * Compute a certainty score for the potential match of query.\n *\n * @param {String} city The potential city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @param {Double} c2_latitude The latitude of the potential match.\n * @param {Double} c2_longitude The The longitude of the potential match.\n * @return {Integer} between 0-1 to compute certainty.\n*/\nfunction getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude){\n\n    let distanceScore = distanceWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));\n    let populationScore = populationWeight * getPopulationPercentage(population, country, TOTAL_POPULATION);\n    let apiScore = getGeocodeCertainty(c1_latitude, c1_longtitude);\n    let totalScore = distanceScore + populationScore + apiScore;\n    return totalScore; \n}\n\n/**\n * Generate the suggestions array of objects with their attributes \n *\n * @param {String} query The partial or full query of a city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @return {Array of {Objects}} between 0-1 to compute certainty.\n * @return Object attributes : name, lattitude, longitude, score\n*/\nfunction generateSuggestions(query, c1_latitude, c1_longtitude){\n\n}\n\n/**\n * Calculate the distance between 2 lat long coordinates \n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @param {Double} c2_latitude The latitude of point 2.\n * @param {Double} c2_longitude The longitude of point 2.\n * @return {Integer} distance in kms between both points\n*/\nfunction calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitude){\n    if ((c1_latitude == c2_latitude)     && \n        (c1_longtitude == c2_longtitude) || \n        (!c1_latitude || !c2_latitude || !c1_longtitude || !c2_longtitude)\n        ){\n\t\treturn 0;\n\t}\n\telse {\n            var p = 0.017453292519943295;    // Math.PI / 180\n            var c = Math.cos;\n            var a = 0.5 - c((lat2 - lat1) * p)/2 + \n                    c(lat1 * p) * c(lat2 * p) * \n                    (1 - c((lon2 - lon1) * p))/2;\n          \n            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km\n\t}\n}\n\n/**\n * Calculate the percentage of the population of the city vs total population of all cities in the csv \n *\n * @param {Integer}population Population count of the city.\n * @param {String}country Country of the city.\n * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv.\n * @return {Double} between 0-1 percentage of population \n*/\nfunction getPopulationPercentage(population, country, TOTAL_POPULATION){\n        if (population && country){\n                return (population/TOTAL_POPULATION);\n            }\n}\n\n/**\n * Geocode Localization for extra certainty using API\n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @return {String} Potential guess of the city from the coordinates \n*/\nfunction getGeocodeCertainty(c1_latitude, c1_longtitude){\n    \n    var url = 'https://geocode.xyz/LAT,LONG?geoit=xml';\n    url = url.replace('LAT', c1_latitude);\n    url = url.replace('LNG', c1_longtitude);\n    fetch(url)\n    .then(data =>{\n        parseString(data, function (err, result) {\n            let jsonData = JSON.stringify(result);\n            return jsonData.geodata.city;\n        });\n    })\n    .then(res => {return console.log(res)})   \n    \n}\n\n",
+    "name": "src/server/lib/logger.js",
+    "content": "import winston from \"winston\";\n\nlet LOGGER_LEVEL = \"info\";\n\nexport const logFormatFactory = (logInfo) => {\n    let date = new Date().toLocaleString();\n    return `${date} - ${logInfo.level}: ${logInfo.message}`;\n};\n\nconst logFormat = winston.format.printf((logInfo) => {\n    return logFormatFactory(logInfo);\n});\n\nexport const logger = winston.createLogger({\n    level: LOGGER_LEVEL,\n    transports: [\n        new winston.transports.Console({\n            format: winston.format.combine(\n                winston.format.colorize(),\n                logFormat,\n            )\n        }),\n    ],\n});",
     "static": true,
-    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/lib/suggestions.js",
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/lib/logger.js",
     "access": "public",
     "description": null,
     "lineNumber": 1
   },
   {
-    "__docId__": 68,
+    "__docId__": 67,
     "kind": "variable",
-    "name": "parseString",
-    "memberof": "src/server/lib/suggestions.js",
+    "name": "LOGGER_LEVEL",
+    "memberof": "src/server/lib/logger.js",
     "static": true,
-    "longname": "src/server/lib/suggestions.js~parseString",
+    "longname": "src/server/lib/logger.js~LOGGER_LEVEL",
     "access": "public",
     "export": false,
-    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importPath": "backend-coding-challenge/src/server/lib/logger.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 2,
+    "lineNumber": 3,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "function",
+    "name": "logFormatFactory",
+    "memberof": "src/server/lib/logger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/logger.js~logFormatFactory",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/lib/logger.js",
+    "importStyle": "{logFormatFactory}",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [
+      {
+        "name": "logInfo",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "variable",
+    "name": "logFormat",
+    "memberof": "src/server/lib/logger.js",
+    "static": true,
+    "longname": "src/server/lib/logger.js~logFormat",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/logger.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 10,
     "undocument": true,
     "type": {
       "types": [
@@ -1074,7 +1104,59 @@
     "ignore": true
   },
   {
-    "__docId__": 69,
+    "__docId__": 70,
+    "kind": "variable",
+    "name": "logger",
+    "memberof": "src/server/lib/logger.js",
+    "static": true,
+    "longname": "src/server/lib/logger.js~logger",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/lib/logger.js",
+    "importStyle": "{logger}",
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "file",
+    "name": "src/server/lib/suggestions.js",
+    "content": "var XMLHttpRequest = require(\"xmlhttprequest\").XMLHttpRequest;\nconst TOTAL_POPULATION = 240097546;\n\n/**\n * Compute a certainty score for the potential match of query.\n *\n * @param {String} city The potential city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @param {Double} c2_latitude The latitude of the potential match.\n * @param {Double} c2_longitude The The longitude of the potential match.\n * @return {Integer} between 0-1 to compute certainty.\n*/\nfunction getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){\n    let equalWeight = 1/2; // a third weight each\n    let distanceScore = equalWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));// TODO\n    let populationScore = equalWeight * getPopulationPercentage(population, TOTAL_POPULATION);\n    console.log('distanceScore:' +distanceScore);\n    console.log('populationScore:' +populationScore);\n    let suggestionScore = 0;\n    let suggestionCity = getGeocodeCertainty(c1_latitude, c1_longtitude);\n    console.log('suggestion: ' + JSON.stringify(suggestionCity) + ' compared: ' + city)\n    if (city == suggestionCity.city + ', ' + suggestionCity.state){\n        suggestionScore += equalWeight\n    }\n    console.log('apiScore:' +suggestionScore);\n\n    let totalScore = distanceScore + populationScore;\n    return totalScore; \n}\n\n/**\n * Generate the suggestions array of objects with their attributes \n *\n * @param {String} query The partial or full query of a city.\n * @param {Double} c1_latitude The latitude in the search.\n * @param {Double} c1_longitude The longitude in the search.\n * @return {Array of {Objects}} between 0-1 to compute certainty.\n * @return Object attributes : name, lattitude, longitude, score\n*/\nfunction generateSuggestions(query, c1_latitude, c1_longtitude){\n\n}\n\n/**\n * Calculate the distance between 2 lat long coordinates \n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @param {Double} c2_latitude The latitude of point 2.\n * @param {Double} c2_longitude The longitude of point 2.\n * @return {Integer} distance in kms between both points\n*/\nfunction calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitude){\n    if ((c1_latitude == c2_latitude)     && \n        (c1_longtitude == c2_longtitude) || \n        (!c1_latitude || !c2_latitude || !c1_longtitude || !c2_longtitude)\n        ){\n\t\treturn 0;\n\t}\n\telse {\n        var R = 6371; // Radius of the earth in km\n        var distanceLat = (c2_latitude-c1_latitude) * (Math.PI/180);  \n        var distanceLon = (c2_longtitude-c1_longtitude) * (Math.PI/180); \n        var a = \n          Math.sin(distanceLat/2) * Math.sin(distanceLat/2) +\n          Math.cos((c1_latitude) * (Math.PI/180)) * Math.cos((c2_latitude) * (Math.PI/180)) * \n          Math.sin(distanceLon/2) * Math.sin(distanceLon/2)\n          ; \n        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); \n        var d = R * c; // Distance in km\n        return d;\n\t}\n}\n\n/**\n * Calculate the percentage of the population of the city vs total population of all cities in the csv \n *\n * @param {Integer}population Population count of the city.\n * @param {String}country Country of the city.\n * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv.\n * @return {Double} between 0-1 percentage of population \n*/\nfunction getPopulationPercentage(population, TOTAL_POPULATION){\n        if (population){\n                return (population/TOTAL_POPULATION);\n            }\n}\n\n/**\n * Geocode Localization for extra certainty using API\n *\n * @param {Double} c1_latitude The latitude of point 1.\n * @param {Double} c1_longitude The longitude of point 1.\n * @return {String} Potential guess of the city from the coordinates \n*/\nfunction getGeocodeCertainty(c1_latitude, c1_longtitude){\n    \n    var url = 'https://geocode.xyz/LAT,LNG?geoit=json';\n    url = url.replace('LAT', c1_latitude);\n    url = url.replace('LNG', c1_longtitude);\n    console.log('url:' + url)\n    \n    var xhr = new XMLHttpRequest(); // a new request\n    xhr.open(\"GET\",url,false);\n    xhr.send(null);\n    var json_obj = JSON.parse(xhr.responseText);  \n    console.log('json_obj'+ JSON.stringify(json_obj));        \n    return {\n        city: json_obj.city,\n        state: json_obj.state\n    };    \n}\n\nexport {getGeocodeCertainty, getPopulationPercentage, calculateDistance, getSuggestionScore}\n",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/lib/suggestions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 72,
+    "kind": "variable",
+    "name": "XMLHttpRequest",
+    "memberof": "src/server/lib/suggestions.js",
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~XMLHttpRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
     "kind": "variable",
     "name": "TOTAL_POPULATION",
     "memberof": "src/server/lib/suggestions.js",
@@ -1085,7 +1167,7 @@
     "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 2,
     "undocument": true,
     "type": {
       "types": [
@@ -1095,49 +1177,232 @@
     "ignore": true
   },
   {
-    "__docId__": 70,
-    "kind": "variable",
-    "name": "CANADA",
+    "__docId__": 74,
+    "kind": "function",
+    "name": "generateSuggestions",
     "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
     "static": true,
-    "longname": "src/server/lib/suggestions.js~CANADA",
+    "longname": "src/server/lib/suggestions.js~generateSuggestions",
     "access": "public",
     "export": false,
     "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
     "importStyle": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
-    "type": {
+    "description": "Generate the suggestions array of objects with their attributes ",
+    "lineNumber": 41,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "query",
+        "description": "The partial or full query of a city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude in the search."
+      }
+    ],
+    "return": {
+      "nullable": null,
       "types": [
-        "string"
-      ]
+        "*"
+      ],
+      "spread": false,
+      "description": "Object attributes : name, lattitude, longitude, score"
     },
     "ignore": true
   },
   {
-    "__docId__": 71,
-    "kind": "variable",
-    "name": "USA",
+    "__docId__": 75,
+    "kind": "function",
+    "name": "getGeocodeCertainty",
     "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
     "static": true,
-    "longname": "src/server/lib/suggestions.js~USA",
+    "longname": "src/server/lib/suggestions.js~getGeocodeCertainty",
     "access": "public",
-    "export": false,
+    "export": true,
     "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
-    "type": {
+    "importStyle": "{getGeocodeCertainty}",
+    "description": "Geocode Localization for extra certainty using API",
+    "lineNumber": 97,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude of point 1."
+      }
+    ],
+    "return": {
+      "nullable": null,
       "types": [
-        "string"
-      ]
-    },
-    "ignore": true
+        "String"
+      ],
+      "spread": false,
+      "description": "Potential guess of the city from the coordinates"
+    }
   },
   {
-    "__docId__": 72,
+    "__docId__": 76,
+    "kind": "function",
+    "name": "getPopulationPercentage",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~getPopulationPercentage",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": "{getPopulationPercentage}",
+    "description": "Calculate the percentage of the population of the city vs total population of all cities in the csv ",
+    "lineNumber": 84,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{Integer}population",
+        "description": "Population count of the city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "{String}country",
+        "description": "Country of the city."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "TOTAL_POPULATION",
+        "description": "Total population of all cities in the csv."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Double"
+      ],
+      "spread": false,
+      "description": "between 0-1 percentage of population"
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "function",
+    "name": "calculateDistance",
+    "memberof": "src/server/lib/suggestions.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/server/lib/suggestions.js~calculateDistance",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
+    "importStyle": "{calculateDistance}",
+    "description": "Calculate the distance between 2 lat long coordinates ",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_latitude",
+        "description": "The latitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c1_longitude",
+        "description": "The longitude of point 1."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_latitude",
+        "description": "The latitude of point 2."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "c2_longitude",
+        "description": "The longitude of point 2."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Integer"
+      ],
+      "spread": false,
+      "description": "distance in kms between both points"
+    }
+  },
+  {
+    "__docId__": 78,
     "kind": "function",
     "name": "getSuggestionScore",
     "memberof": "src/server/lib/suggestions.js",
@@ -1146,11 +1411,11 @@
     "static": true,
     "longname": "src/server/lib/suggestions.js~getSuggestionScore",
     "access": "public",
-    "export": false,
+    "export": true,
     "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
+    "importStyle": "{getSuggestionScore}",
     "description": "Compute a certainty score for the potential match of query.",
-    "lineNumber": 18,
+    "lineNumber": 14,
     "params": [
       {
         "nullable": null,
@@ -1210,239 +1475,221 @@
       ],
       "spread": false,
       "description": "between 0-1 to compute certainty."
-    },
-    "ignore": true
+    }
   },
   {
-    "__docId__": 73,
-    "kind": "function",
-    "name": "generateSuggestions",
-    "memberof": "src/server/lib/suggestions.js",
+    "__docId__": 79,
+    "kind": "file",
+    "name": "src/server/lib/utils.js",
+    "content": "\nexport default class Util {\n    constructor() {\n      this.statusCode = null;\n      this.type = null;\n      this.data = null;\n      this.message = null;\n    }\n  \n    setSuccess(statusCode, message, data) {\n      this.statusCode = statusCode;\n      this.message = message;\n      this.data = data;\n      this.type = 'success';\n    }\n  \n    setError(statusCode, message) {\n      this.statusCode = statusCode;\n      this.message = message;\n      this.type = 'error';\n    }\n  \n    send(res) {\n      const result = {\n        status: this.type,\n        message: this.message,\n        data: this.data,\n      };\n  \n      if (this.type === 'success') {\n        return res.status(this.statusCode).json(result);\n      }\n      return res.status(this.statusCode).json({\n        status: this.type,\n        message: this.message,\n      });\n    }\n  }",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/lib/utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 80,
+    "kind": "class",
+    "name": "Util",
+    "memberof": "src/server/lib/utils.js",
+    "static": true,
+    "longname": "src/server/lib/utils.js~Util",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/lib/utils.js",
+    "importStyle": "Util",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "interface": false
+  },
+  {
+    "__docId__": 81,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/server/lib/utils.js~Util",
     "generator": false,
     "async": false,
-    "static": true,
-    "longname": "src/server/lib/suggestions.js~generateSuggestions",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#constructor",
     "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
-    "description": "Generate the suggestions array of objects with their attributes ",
-    "lineNumber": 36,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "query",
-        "description": "The partial or full query of a city."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_latitude",
-        "description": "The latitude in the search."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_longitude",
-        "description": "The longitude in the search."
-      }
-    ],
-    "return": {
-      "nullable": null,
+    "description": null,
+    "lineNumber": 3,
+    "undocument": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "member",
+    "name": "statusCode",
+    "memberof": "src/server/lib/utils.js~Util",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#statusCode",
+    "access": "public",
+    "description": null,
+    "lineNumber": 4,
+    "undocument": true,
+    "type": {
       "types": [
         "*"
-      ],
-      "spread": false,
-      "description": "Object attributes : name, lattitude, longitude, score"
-    },
-    "ignore": true
+      ]
+    }
   },
   {
-    "__docId__": 74,
-    "kind": "function",
-    "name": "calculateDistance",
-    "memberof": "src/server/lib/suggestions.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/server/lib/suggestions.js~calculateDistance",
+    "__docId__": 83,
+    "kind": "member",
+    "name": "type",
+    "memberof": "src/server/lib/utils.js~Util",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#type",
     "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
-    "description": "Calculate the distance between 2 lat long coordinates ",
-    "lineNumber": 49,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_latitude",
-        "description": "The latitude of point 1."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_longitude",
-        "description": "The longitude of point 1."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c2_latitude",
-        "description": "The latitude of point 2."
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c2_longitude",
-        "description": "The longitude of point 2."
-      }
-    ],
-    "return": {
-      "nullable": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
       "types": [
-        "Integer"
-      ],
-      "spread": false,
-      "description": "distance in kms between both points"
-    },
-    "ignore": true
+        "*"
+      ]
+    }
   },
   {
-    "__docId__": 75,
-    "kind": "function",
-    "name": "getPopulationPercentage",
-    "memberof": "src/server/lib/suggestions.js",
+    "__docId__": 84,
+    "kind": "member",
+    "name": "data",
+    "memberof": "src/server/lib/utils.js~Util",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#data",
+    "access": "public",
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "member",
+    "name": "message",
+    "memberof": "src/server/lib/utils.js~Util",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#message",
+    "access": "public",
+    "description": null,
+    "lineNumber": 7,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "method",
+    "name": "setSuccess",
+    "memberof": "src/server/lib/utils.js~Util",
     "generator": false,
     "async": false,
-    "static": true,
-    "longname": "src/server/lib/suggestions.js~getPopulationPercentage",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#setSuccess",
     "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
-    "description": "Calculate the percentage of the population of the city vs total population of all cities in the csv ",
-    "lineNumber": 75,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
     "params": [
       {
-        "nullable": null,
+        "name": "statusCode",
         "types": [
           "*"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "{Integer}population",
-        "description": "Population count of the city."
+        ]
       },
       {
-        "nullable": null,
+        "name": "message",
         "types": [
           "*"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "{String}country",
-        "description": "Country of the city."
+        ]
       },
       {
-        "nullable": null,
+        "name": "data",
         "types": [
-          "Integer"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "TOTAL_POPULATION",
-        "description": "Total population of all cities in the csv."
+          "*"
+        ]
       }
     ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Double"
-      ],
-      "spread": false,
-      "description": "between 0-1 percentage of population"
-    },
-    "ignore": true
+    "return": null
   },
   {
-    "__docId__": 76,
-    "kind": "function",
-    "name": "getGeocodeCertainty",
-    "memberof": "src/server/lib/suggestions.js",
+    "__docId__": 91,
+    "kind": "method",
+    "name": "setError",
+    "memberof": "src/server/lib/utils.js~Util",
     "generator": false,
     "async": false,
-    "static": true,
-    "longname": "src/server/lib/suggestions.js~getGeocodeCertainty",
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#setError",
     "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/lib/suggestions.js",
-    "importStyle": null,
-    "description": "Geocode Localization for extra certainty using API",
-    "lineNumber": 88,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
     "params": [
       {
-        "nullable": null,
+        "name": "statusCode",
         "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_latitude",
-        "description": "The latitude of point 1."
+          "*"
+        ]
       },
       {
-        "nullable": null,
+        "name": "message",
         "types": [
-          "Double"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "c1_longitude",
-        "description": "The longitude of point 1."
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 95,
+    "kind": "method",
+    "name": "send",
+    "memberof": "src/server/lib/utils.js~Util",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/server/lib/utils.js~Util#send",
+    "access": "public",
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "params": [
+      {
+        "name": "res",
+        "types": [
+          "*"
+        ]
       }
     ],
     "return": {
-      "nullable": null,
       "types": [
-        "String"
-      ],
-      "spread": false,
-      "description": "Potential guess of the city from the coordinates"
-    },
-    "ignore": true
+        "*"
+      ]
+    }
   },
   {
-    "__docId__": 77,
+    "__docId__": 96,
+    "kind": "file",
+    "name": "src/server/migrations/20190804002545-create-pg_trgm.js",
+    "content": "module.exports = {\n  up: (queryInterface, Sequelize) => {\n    return queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS pg_trgm;');\n  },\n  down: (queryInterface, Sequelize) => {\n  }\n};",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/migrations/20190804002545-create-pg_trgm.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 97,
     "kind": "file",
     "name": "src/server/migrations/20190804002546-create-cities.js",
     "content": "module.exports = {\n  up: (queryInterface, Sequelize) => {\n    return queryInterface.createTable('cities', {\n      id: {\n        allowNull: false,\n        autoIncrement: true,\n        primaryKey: true,\n        type: Sequelize.INTEGER\n      },\n      name: {\n        type: Sequelize.STRING,\n        allowNull: false,\n      },\n      country: {\n        type: Sequelize.STRING,\n        allowNull: true,\n      },\n      admin1: {\n        type: Sequelize.STRING,\n        allowNull: true,\n      },\n      longitude: {\n        type: Sequelize.DOUBLE,\n        allowNull: true,\n      },\n      latitude: {\n        type: Sequelize.DOUBLE,\n        allowNull: true,\n      },\n      population: {\n        type: Sequelize.INTEGER,\n        allowNull: true,\n      },\n      createdAt: {\n        allowNull: false,\n        type: Sequelize.DATE\n      },\n      updatedAt: {\n        allowNull: false,\n        type: Sequelize.DATE\n      }\n    });\n  },\n  down: (queryInterface) => {\n    return queryInterface.dropTable('cities');\n  }\n};",
@@ -1453,7 +1700,18 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 78,
+    "__docId__": 98,
+    "kind": "file",
+    "name": "src/server/migrations/20190804002546-create-index.js",
+    "content": "module.exports = {\n  up: (queryInterface, Sequelize) => {\n    return queryInterface.addIndex('cities', {fields: ['name'], using:'gin', operator:'gin_trgm_ops'});\n   },\n\n  down: (queryInterface, Sequelize) => {\n    return queryInterface.removeIndex('cities','name');\n  }\n};",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/migrations/20190804002546-create-index.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 99,
     "kind": "file",
     "name": "src/server/models/cities.js",
     "content": "export default (sequelize, DataTypes) => {\n  const City = sequelize.define('cities', {\n    name: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    country: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    admin1: {\n      type: DataTypes.STRING,\n      allowNull: false,\n    },\n    latitude: {\n      type: DataTypes.DOUBLE,\n      allowNull: false,\n    },\n    longitude: {\n      type: DataTypes.DOUBLE,\n      allowNull: false,\n    },\n    population: {\n      type: DataTypes.INTEGER,\n      allowNull: false,\n    }\n  });\n  return City;\n};",
@@ -1464,7 +1722,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 79,
+    "__docId__": 100,
     "kind": "function",
     "name": "cities",
     "memberof": "src/server/models/cities.js",
@@ -1500,7 +1758,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 101,
     "kind": "file",
     "name": "src/server/models/index.js",
     "content": "\nconst fs = require('fs');\nconst path = require('path');\nconst Sequelize = require('sequelize');\nconst basename = path.basename(__filename);\nconst env = process.env.NODE_ENV || 'development';\nconst config = require(__dirname + '/../config/config.json')[env];\nconst db = {};\n\n// Auto transform the models into migration files and init the Sequelize objects for each model\nlet sequelize;\nif (config.use_env_variable) {\n  sequelize = new Sequelize(process.env[config.use_env_variable], config);\n} else {\n  sequelize = new Sequelize(config.database, config.username, config.password, config);\n}\n\nfs\n  .readdirSync(__dirname)\n  .filter(file => {\n    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');\n  })\n  .forEach(file => {\n    const model = sequelize['import'](path.join(__dirname, file));\n    db[model.name] = model;\n  });\n\nObject.keys(db).forEach(modelName => {\n  if (db[modelName].associate) {\n    db[modelName].associate(db);\n  }\n});\n\ndb.sequelize = sequelize;\ndb.Sequelize = Sequelize;\n\nmodule.exports = db;\n",
@@ -1511,7 +1769,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 81,
+    "__docId__": 102,
     "kind": "variable",
     "name": "fs",
     "memberof": "src/server/models/index.js",
@@ -1532,7 +1790,7 @@
     "ignore": true
   },
   {
-    "__docId__": 82,
+    "__docId__": 103,
     "kind": "variable",
     "name": "path",
     "memberof": "src/server/models/index.js",
@@ -1553,7 +1811,7 @@
     "ignore": true
   },
   {
-    "__docId__": 83,
+    "__docId__": 104,
     "kind": "variable",
     "name": "Sequelize",
     "memberof": "src/server/models/index.js",
@@ -1574,7 +1832,7 @@
     "ignore": true
   },
   {
-    "__docId__": 84,
+    "__docId__": 105,
     "kind": "variable",
     "name": "basename",
     "memberof": "src/server/models/index.js",
@@ -1595,7 +1853,7 @@
     "ignore": true
   },
   {
-    "__docId__": 85,
+    "__docId__": 106,
     "kind": "variable",
     "name": "env",
     "memberof": "src/server/models/index.js",
@@ -1616,7 +1874,7 @@
     "ignore": true
   },
   {
-    "__docId__": 86,
+    "__docId__": 107,
     "kind": "variable",
     "name": "config",
     "memberof": "src/server/models/index.js",
@@ -1637,7 +1895,7 @@
     "ignore": true
   },
   {
-    "__docId__": 87,
+    "__docId__": 108,
     "kind": "variable",
     "name": "db",
     "memberof": "src/server/models/index.js",
@@ -1658,10 +1916,10 @@
     "ignore": true
   },
   {
-    "__docId__": 88,
+    "__docId__": 109,
     "kind": "file",
     "name": "src/server/routes.js",
-    "content": "import express from \"express\";\nimport getSuggestionScore from \"./lib/suggestions\"\nimport {getAll, getMatches} from './controllers/city'\n\nlet router = new express.Router();\n\nrouter.get('/', (req, res, next) => res.render('index.ejs', { title: 'Express' }));\n\n// router.post('*', (req, res) => res.status(200).send({\n// message: 'Welcome to the default API route',\n// }));\n\n// Suggestions GET endpoint for generating the list of potential matches and their score\nrouter.get('/suggestions', (req, res) => res.status(200).send(\n  {\n    message: getSuggestionScore(),\n})); \n\n// Get all cities in the DB \nrouter.get('/cities', (req, res) => res.status(200).send({\n  data: getAll(),\n}));\n\nrouter.get('/mycities/', (req, res) => {\n  var city = req.query.city;\n  var lat = req.query.lat;\n  var long = req.query.long;\n  \n  res.status(200).send({\n  \n  })\n})\n\nexport default router;",
+    "content": "import express from \"express\";\nimport {CityController} from './controllers/cityController'\n\nlet router = new express.Router();\n\nrouter.get('/', (req, res, next) => res.render('index.ejs', { title: 'Express' }));\n\n// router.post('*', (req, res) => res.status(200).send({\n// message: 'Welcome to the default API route',\n// }));\n\n// Suggestions GET endpoint for generating the list of potential matches and their score\nrouter.get('/suggestions', CityController.getMatches); \n\n// Get all cities in the DB \nrouter.get('/cities', CityController.getAll);\n\nexport default router;",
     "static": true,
     "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/routes.js",
     "access": "public",
@@ -1669,10 +1927,10 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 89,
+    "__docId__": 110,
     "kind": "file",
     "name": "src/server/seeders/seed.js",
-    "content": "import fs from 'fs';\nimport csv from 'csv';\nvar adminCodeToZip = require('../controllers/city.js').adminCodeToZip;\nvar db = require('../models/');\nconst City = db.sequelize.import('cities', require('../models/cities'));\n\n/**\n * Initial seed the database with the csv file, loading it, parsing and then committing to db\n*/\nexport default function seed(){\n    var input = fs.createReadStream('/Users/shawnelbaz/backend-coding-challenge/src/data/cities_canada-usa.tsv');\n    var parser = csv.parse({\n        delimiter: '\\t',\n        columns: true,\n        skip_lines_with_error: true,\n        relax_column_count: true  \n    })  \n    var transform = csv.transform(function(row) {\n    \n    var resultObj = {\n        name: row['name'],\n        country: row['country'],\n        admin1: adminCodeToZip(row['admin1']),\n        longitude: row['long'],\n        latitude: row['lat'],\n        population: row['population'],\n    }\n\n    City.create(resultObj)\n        .then(function() {\n        })\n        .catch(function(err) {\n            console.log('Error encountered: ' + err)\n        })\n    });\n\ninput.pipe(parser).pipe(transform)\n}\n\n",
+    "content": "import fs from 'fs';\nimport csv from 'csv';\nimport path from 'path';\nvar adminCodeToZip = require('../controllers/cityController').adminCodeToZip;\nvar db = require('../models/');\nconst City = db.sequelize.import('cities', require('../models/cities'));\n\n/**\n * Initial seed the database with the csv file, loading it, parsing and then committing to db\n*/\nexport default function seed(){\n    const thePath = path.join(__dirname, '../../data/cities_canada-usa.tsv');\n    var input = fs.createReadStream(thePath);\n    var parser = csv.parse({\n        delimiter: '\\t',\n        columns: true,\n        skip_lines_with_error: true,\n        relax_column_count: true  \n    })  \n    var transform = csv.transform(function(row) {\n    \n    var resultObj = {\n        name: row['name'],\n        country: row['country'],\n        admin1: adminCodeToZip(row['admin1']),\n        longitude: row['long'],\n        latitude: row['lat'],\n        population: row['population'],\n    }\n\n    City.create(resultObj)\n        .then(function() {\n        })\n        .catch(function(err) {\n            console.log('Error encountered: ' + err)\n        })\n    });\n\ninput.pipe(parser).pipe(transform)\n}\n\n",
     "static": true,
     "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/seeders/seed.js",
     "access": "public",
@@ -1680,33 +1938,12 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 90,
+    "__docId__": 111,
     "kind": "variable",
     "name": "adminCodeToZip",
     "memberof": "src/server/seeders/seed.js",
     "static": true,
     "longname": "src/server/seeders/seed.js~adminCodeToZip",
-    "access": "public",
-    "export": false,
-    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    },
-    "ignore": true
-  },
-  {
-    "__docId__": 91,
-    "kind": "variable",
-    "name": "db",
-    "memberof": "src/server/seeders/seed.js",
-    "static": true,
-    "longname": "src/server/seeders/seed.js~db",
     "access": "public",
     "export": false,
     "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
@@ -1722,12 +1959,12 @@
     "ignore": true
   },
   {
-    "__docId__": 92,
+    "__docId__": 112,
     "kind": "variable",
-    "name": "City",
+    "name": "db",
     "memberof": "src/server/seeders/seed.js",
     "static": true,
-    "longname": "src/server/seeders/seed.js~City",
+    "longname": "src/server/seeders/seed.js~db",
     "access": "public",
     "export": false,
     "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
@@ -1743,7 +1980,28 @@
     "ignore": true
   },
   {
-    "__docId__": 93,
+    "__docId__": 113,
+    "kind": "variable",
+    "name": "City",
+    "memberof": "src/server/seeders/seed.js",
+    "static": true,
+    "longname": "src/server/seeders/seed.js~City",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 6,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 114,
     "kind": "function",
     "name": "seed",
     "memberof": "src/server/seeders/seed.js",
@@ -1756,9 +2014,233 @@
     "importPath": "backend-coding-challenge/src/server/seeders/seed.js",
     "importStyle": "seed",
     "description": "Initial seed the database with the csv file, loading it, parsing and then committing to db",
-    "lineNumber": 10,
+    "lineNumber": 11,
     "params": [],
     "return": null
+  },
+  {
+    "__docId__": 115,
+    "kind": "file",
+    "name": "src/server/services/cityService.js",
+    "content": "var db = require('../models/');\nconst City = db.sequelize.import('cities', require('../models/cities'));\nimport sequelize from 'sequelize';\nimport { logger } from '../lib/logger';\nconst Op = sequelize.Op;\n\n/**\n * City Service for the cityControllers\n */\nclass CityService {\n\n    /**\n     * Function for returning all rows in cities table\n     * @return {Array of {Objects}} All cities with all their columns\n    */\n    static async getAllCities() {\n        try {\n            return await City.findAll();\n        } catch (error) {\n            throw error;\n        }\n    }\n\n    /**\n     * Function for adding a new city in the cities table\n     * @param {String} name The city name\n     * @param {String} country The country the city is in (US or CA)\n     * @param {String} admin1 The 2 character state or province code \n     * @param {Float} latitude The latitude in the search.\n     * @param {Float} longitude The longitude in the search.\n     * @param {Double} population The population of the city.\n    */\n    static async addCity(name, country, admin1, longitude, latitude, population){\n        try {\n            return await City.create(name, country, admin1, longitude, latitude, population);\n        } catch (error){\n            throw error;\n        }\n    }\n\n     /**\n     * Function for finding a partial match to a city name, using trigram lookup on names column\n     * @param {String} lookupValue The full or partial city name being searched\n    * @return {Array of {Objects}} All cities partial or full matching the name column\n\n    */\n    static async findACity(lookupValue){\n        try {\n            let cityMatches = await City.findAll({\n                attributes: {include: ['name', 'country', 'longitude', 'latitude']},\n                  where: {\n                    name: {\n                      [Op.iLike]: `%${lookupValue}%` // trigram lookup \n                    }\n                  }\n                });\n              \n            logger.log('info', JSON.stringify(cityMatches));\n            return cityMatches;\n    }catch(error){\n        logger.log('info', error);\n    }\n    }\n}\n\nexport default CityService;",
+    "static": true,
+    "longname": "/Users/shawnelbaz/backend-coding-challenge/src/server/services/cityService.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 116,
+    "kind": "variable",
+    "name": "db",
+    "memberof": "src/server/services/cityService.js",
+    "static": true,
+    "longname": "src/server/services/cityService.js~db",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/services/cityService.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 117,
+    "kind": "variable",
+    "name": "City",
+    "memberof": "src/server/services/cityService.js",
+    "static": true,
+    "longname": "src/server/services/cityService.js~City",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/services/cityService.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 118,
+    "kind": "variable",
+    "name": "Op",
+    "memberof": "src/server/services/cityService.js",
+    "static": true,
+    "longname": "src/server/services/cityService.js~Op",
+    "access": "public",
+    "export": false,
+    "importPath": "backend-coding-challenge/src/server/services/cityService.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 119,
+    "kind": "class",
+    "name": "CityService",
+    "memberof": "src/server/services/cityService.js",
+    "static": true,
+    "longname": "src/server/services/cityService.js~CityService",
+    "access": "public",
+    "export": true,
+    "importPath": "backend-coding-challenge/src/server/services/cityService.js",
+    "importStyle": "CityService",
+    "description": "City Service for the cityControllers",
+    "lineNumber": 10,
+    "interface": false
+  },
+  {
+    "__docId__": 120,
+    "kind": "method",
+    "name": "getAllCities",
+    "memberof": "src/server/services/cityService.js~CityService",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/services/cityService.js~CityService.getAllCities",
+    "access": "public",
+    "description": "Function for returning all rows in cities table",
+    "lineNumber": 16,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array of {Objects}"
+      ],
+      "spread": false,
+      "description": "All cities with all their columns"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 121,
+    "kind": "method",
+    "name": "addCity",
+    "memberof": "src/server/services/cityService.js~CityService",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/services/cityService.js~CityService.addCity",
+    "access": "public",
+    "description": "Function for adding a new city in the cities table",
+    "lineNumber": 33,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "The city name"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "country",
+        "description": "The country the city is in (US or CA)"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "admin1",
+        "description": "The 2 character state or province code"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Float"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "latitude",
+        "description": "The latitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Float"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "longitude",
+        "description": "The longitude in the search."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Double"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "population",
+        "description": "The population of the city."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "method",
+    "name": "findACity",
+    "memberof": "src/server/services/cityService.js~CityService",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/server/services/cityService.js~CityService.findACity",
+    "access": "public",
+    "description": "Function for finding a partial match to a city name, using trigram lookup on names column",
+    "lineNumber": 47,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "lookupValue",
+        "description": "The full or partial city name being searched"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array of {Objects}"
+      ],
+      "spread": false,
+      "description": "All cities partial or full matching the name column"
+    }
   },
   {
     "kind": "index",
@@ -1770,7 +2252,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"backend-coding-challenge\",\n  \"version\": \"1.0.0\",\n  \"description\": \"(inspired by https://github.com/busbud/coding-challenge-backend-c)\",\n  \"main\": \"app.js\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"dev\": \"nodemon --exec babel-node src/app.js\",\n    \"start\": \"node src/build/app.js\",\n    \"test\": \"export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./test/test.js --timeout 20000 --exit\",\n    \"build\": \"rm -rf ./src/build && babel -d ./src/build ./src -s\",\n    \"dbcreate\": \"createdb cities && sequelize db:migrate\",\n    \"createdb\": \"createdb\",\n    \"sequelize\": \"sequelize\",\n    \"generate-lcov\": \"nyc report --reporter=text-lcov > lcov.info\",\n    \"coveralls-coverage\": \"coveralls < lcov.info\",\n    \"codeclimate-coverage\": \"codeclimate-test-reporter < lcov.info\",\n    \"coverage\": \"nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/shelbaz/backend-coding-challenge.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/shelbaz/backend-coding-challenge/issues\"\n  },\n  \"homepage\": \"https://github.com/shelbaz/backend-coding-challenge#readme\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.4.3\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/node\": \"^7.2.2\",\n    \"@babel/plugin-transform-runtime\": \"^7.4.3\",\n    \"@babel/preset-env\": \"^7.5.5\",\n    \"@babel/register\": \"^7.5.5\",\n    \"@babel/runtime\": \"^7.4.3\",\n    \"babel-cli\": \"^6.26.0\",\n    \"babel-loader\": \"^8.0.5\",\n    \"babel-preset-es2015\": \"^6.24.1\",\n    \"chai\": \"^4.2.0\",\n    \"codeclimate-test-reporter\": \"^0.5.1\",\n    \"coveralls\": \"^3.0.5\",\n    \"eslint\": \"^6.1.0\",\n    \"eslint-config-airbnb-base\": \"^13.2.0\",\n    \"eslint-plugin-import\": \"^2.18.2\",\n    \"mocha\": \"^6.2.0\",\n    \"nodemon\": \"^1.19.1\",\n    \"nyc\": \"^14.1.1\",\n    \"sequelize-cli\": \"^5.5.0\"\n  },\n  \"dependencies\": {\n    \"babel-core\": \"^6.26.3\",\n    \"babel-polyfill\": \"^6.26.0\",\n    \"body-parser\": \"^1.19.0\",\n    \"chai-http\": \"^4.3.0\",\n    \"cookie-parser\": \"^1.4.4\",\n    \"cross-env\": \"^5.2.0\",\n    \"csv\": \"^5.1.1\",\n    \"ejs\": \"^2.6.2\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"express\": \"^4.17.1\",\n    \"fs\": \"0.0.1-security\",\n    \"http\": \"0.0.0\",\n    \"logger\": \"0.0.1\",\n    \"morgan\": \"^1.9.1\",\n    \"node-sass-middleware\": \"^0.11.0\",\n    \"pg\": \"^7.12.0\",\n    \"pg-hstore\": \"^2.3.3\",\n    \"sequelize\": \"^5.12.3\",\n    \"xml2js\": \"^0.4.19\"\n  }\n}\n",
+    "content": "{\n  \"name\": \"backend-coding-challenge\",\n  \"version\": \"1.0.0\",\n  \"description\": \"(inspired by https://github.com/busbud/coding-challenge-backend-c)\",\n  \"main\": \"app.js\",\n  \"directories\": {\n    \"test\": \"test\"\n  },\n  \"scripts\": {\n    \"dev\": \"nodemon --exec babel-node src/app.js\",\n    \"debug\": \"nodemon --inspect --exec babel-node src/app.js\",\n    \"start\": \"node src/build/app.js\",\n    \"test\": \"export NODE_ENV=test &&  sequelize db:migrate:undo:all  && sequelize db:migrate  && nyc --require @babel/register  mocha ./test/test.js --timeout 20000 --exit\",\n    \"build\": \"rm -rf ./src/build && babel -d ./src/build ./src -s\",\n    \"dbcreate\": \"createdb cities && sequelize db:migrate\",\n    \"createdb\": \"createdb\",\n    \"sequelize\": \"sequelize\",\n    \"generate-lcov\": \"nyc report --reporter=text-lcov > lcov.info\",\n    \"coveralls-coverage\": \"coveralls < lcov.info\",\n    \"codeclimate-coverage\": \"codeclimate-test-reporter < lcov.info\",\n    \"coverage\": \"nyc --require @babel/register npm run test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage && nyc report --reporter=text-lcov | coveralls\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/shelbaz/backend-coding-challenge.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"\",\n  \"license\": \"ISC\",\n  \"bugs\": {\n    \"url\": \"https://github.com/shelbaz/backend-coding-challenge/issues\"\n  },\n  \"homepage\": \"https://github.com/shelbaz/backend-coding-challenge#readme\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.5.5\",\n    \"@babel/core\": \"^7.5.5\",\n    \"@babel/node\": \"^7.0.0\",\n    \"@babel/plugin-transform-runtime\": \"^7.5.5\",\n    \"@babel/preset-env\": \"^7.0.0\",\n    \"@babel/register\": \"^7.5.5\",\n    \"@babel/runtime\": \"^7.4.3\",\n    \"babel-core\": \"^7.0.0-bridge.0\",\n    \"babel-loader\": \"^8.0.6\",\n    \"chai\": \"^4.2.0\",\n    \"codeclimate-test-reporter\": \"^0.5.1\",\n    \"coveralls\": \"^3.0.5\",\n    \"eslint\": \"^6.1.0\",\n    \"eslint-config-airbnb-base\": \"^13.2.0\",\n    \"eslint-plugin-import\": \"^2.18.2\",\n    \"mocha\": \"^6.2.0\",\n    \"nodemon\": \"^1.19.1\",\n    \"nyc\": \"^14.1.1\",\n    \"sequelize-cli\": \"^5.5.0\"\n  },\n  \"dependencies\": {\n    \"@babel/polyfill\": \"^7.0.0\",\n    \"body-parser\": \"^1.19.0\",\n    \"chai-http\": \"^4.3.0\",\n    \"cookie-parser\": \"^1.4.4\",\n    \"cross-env\": \"^5.2.0\",\n    \"csv\": \"^5.1.1\",\n    \"ejs\": \"^2.6.2\",\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"express\": \"^4.17.1\",\n    \"express-winston\": \"^3.3.0\",\n    \"fs\": \"0.0.1-security\",\n    \"http\": \"0.0.0\",\n    \"logger\": \"0.0.1\",\n    \"node-sass-middleware\": \"^0.11.0\",\n    \"pg\": \"^7.12.0\",\n    \"pg-hstore\": \"^2.3.3\",\n    \"sequelize\": \"^5.12.3\",\n    \"webpack\": \"^4.39.1\",\n    \"winston\": \"^3.2.1\",\n    \"xmlhttprequest\": \"^1.8.0\"\n  }\n}\n",
     "longname": "/Users/shawnelbaz/backend-coding-challenge/package.json",
     "name": "package.json",
     "static": true,
