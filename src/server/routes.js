@@ -1,6 +1,6 @@
 import express from "express";
-import getSuggestionScore from "./lib/suggestions"
-import {getAll, getMatches} from './controllers/city'
+import {getSuggestionScore} from "./lib/suggestions"
+import {CityController} from './controllers/cityController'
 
 let router = new express.Router();
 
@@ -17,9 +17,7 @@ router.get('/suggestions', (req, res) => res.status(200).send(
 })); 
 
 // Get all cities in the DB 
-router.get('/cities', (req, res) => res.status(200).send({
-  data: getAll(),
-}));
+router.get('/cities', CityController.getAll);
 
 router.get('/mycities/', (req, res) => {
   var city = req.query.city;

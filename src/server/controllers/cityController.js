@@ -1,25 +1,26 @@
-var db = require('../models/index');
-const City = db.sequelize.import('cities', require('../models/cities'));
+import Util from '../lib/utils';
+import CityService from '../services/cityService'
+
+const util = new Util();
 
 /**
 * City class database helper methods
 */
-class Cities {
-  
+class CityController {
   static async create(req, res) {
-    const { name, country, admin1, longitude, latitude, population } = req.body
-    return await City
-      .create({
-        name,
-        country,
-        admin1,
-        longitude,
-        latitude,
-        population
-      })
-      .then(city => res.status(201).send({
-        message: `Your city ${name} has been created successfully `
-      }))
+      if (!req.body.name || !req.body.country || !req.body.admin1 || !req.body.longitude || !req.body.latitude || !req.body.population) {
+        util.setError(400, 'Incomplete details');
+        return util.send(res);
+      }
+      const { name, country, admin1, longitude, latitude, population } = req.body
+      try {
+        const createdCity = await CityService.addCity(name, country, admin1, longitude, latitude, population);
+        util.setSuccess(201, 'City Added!', createdCity);
+        return util.send(res);
+      } catch (error) {
+        util.setError(400, error.message);
+        return util.send(res);
+      }
     }
 
     /**
@@ -41,7 +42,19 @@ class Cities {
      * @return {Array of {Objects}} of all cities
     */
     static async getAll(req, res){
-      return await City.findAll({});
+      try {
+        console.log('hit here');
+        const allCities = await CityService.getAllCities();
+        if (allCities.length > 0) {
+          util.setSuccess(200, 'Cities retrieved', allCities);
+        } else {
+          util.setSuccess(200, 'No cities found');
+        }
+        return util.send(res);
+      } catch (error) {
+        util.setError(400, error);
+        return util.send(res);
+      }
     }
     
     /**
@@ -75,7 +88,7 @@ class Cities {
  * Convert numeric province code to 2 letter code if Canada
  *
  * @param {String} Integer string of province code
- * @return {String} of province code (CA) or state code (US)
+ * @return {String} of province code (CA) or state code (US- default)
 */
 function adminCodeToZip(adminCode){
     switch(adminCode){
@@ -95,5 +108,4 @@ function adminCodeToZip(adminCode){
         default: return adminCode;
     }
 }
-
-export {Cities, adminCodeToZip}
+export {CityController, adminCodeToZip}

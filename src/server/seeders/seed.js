@@ -1,7 +1,7 @@
 import fs from 'fs';
 import csv from 'csv';
 import path from 'path';
-var adminCodeToZip = require('../controllers/city.js').adminCodeToZip;
+var adminCodeToZip = require('../controllers/cityController').adminCodeToZip;
 var db = require('../models/');
 const City = db.sequelize.import('cities', require('../models/cities'));
 
