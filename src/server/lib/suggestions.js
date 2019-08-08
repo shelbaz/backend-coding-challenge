@@ -1,9 +1,5 @@
-const fetch = require("node-fetch");
-var parseString = require('xml2js').parseString;
-
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const TOTAL_POPULATION = 240097546;
-const CANADA = "CA";
-const USA = "US";
 
 /**
  * Compute a certainty score for the potential match of query.
@@ -15,12 +11,21 @@ const USA = "US";
  * @param {Double} c2_longitude The The longitude of the potential match.
  * @return {Integer} between 0-1 to compute certainty.
 */
-function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude){
+function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){
+    let equalWeight = 1/2; // a third weight each
+    let distanceScore = equalWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));// TODO
+    let populationScore = equalWeight * getPopulationPercentage(population, TOTAL_POPULATION);
+    console.log('distanceScore:' +distanceScore);
+    console.log('populationScore:' +populationScore);
+    let suggestionScore = 0;
+    let suggestionCity = getGeocodeCertainty(c1_latitude, c1_longtitude);
+    console.log('suggestion: ' + JSON.stringify(suggestionCity) + ' compared: ' + city)
+    if (city == suggestionCity.city + ', ' + suggestionCity.state){
+        suggestionScore += equalWeight
+    }
+    console.log('apiScore:' +suggestionScore);
 
-    let distanceScore = distanceWeight * (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude));
-    let populationScore = populationWeight * getPopulationPercentage(population, country, TOTAL_POPULATION);
-    let apiScore = getGeocodeCertainty(c1_latitude, c1_longtitude);
-    let totalScore = distanceScore + populationScore + apiScore;
+    let totalScore = distanceScore + populationScore;
     return totalScore; 
 }
 
@@ -76,8 +81,8 @@ function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitud
  * @param {Integer} TOTAL_POPULATION Total population of all cities in the csv.
  * @return {Double} between 0-1 percentage of population 
 */
-function getPopulationPercentage(population, country, TOTAL_POPULATION){
-        if (population && country){
+function getPopulationPercentage(population, TOTAL_POPULATION){
+        if (population){
                 return (population/TOTAL_POPULATION);
             }
 }
@@ -91,18 +96,20 @@ function getPopulationPercentage(population, country, TOTAL_POPULATION){
 */
 function getGeocodeCertainty(c1_latitude, c1_longtitude){
     
-    var url = 'https://geocode.xyz/LAT,LONG?geoit=xml';
+    var url = 'https://geocode.xyz/LAT,LNG?geoit=json';
     url = url.replace('LAT', c1_latitude);
     url = url.replace('LNG', c1_longtitude);
-    fetch(url)
-    .then(data =>{
-        parseString(data, function (err, result) {
-            let jsonData = JSON.stringify(result);
-            return jsonData.geodata.city;
-        });
-    })
-    .then(res => {return console.log(res)})   
+    console.log('url:' + url)
     
+    var xhr = new XMLHttpRequest(); // a new request
+    xhr.open("GET",url,false);
+    xhr.send(null);
+    var json_obj = JSON.parse(xhr.responseText);  
+    console.log('json_obj'+ JSON.stringify(json_obj));        
+    return {
+        city: json_obj.city,
+        state: json_obj.state
+    };    
 }
 
 export {getGeocodeCertainty, getPopulationPercentage, calculateDistance, getSuggestionScore}

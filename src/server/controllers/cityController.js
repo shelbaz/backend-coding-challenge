@@ -1,6 +1,7 @@
 import Util from '../lib/utils';
-import CityService from '../services/cityService'
-import {logger} from '../lib/logger'
+import CityService from '../services/cityService';
+import {logger} from '../lib/logger';
+import {getSuggestionScore} from '../lib/suggestions';
 
 const util = new Util();
 
@@ -74,17 +75,23 @@ class CityController {
       let suggestionsList = {};
       suggestionsList.suggestions = [];
       for(let city in cityMatches){
+        let cityAndState = cityMatches[city].name + ', ' + cityMatches[city].admin1;
         let suggestionsObj = {
-          "name": cityMatches[city].name + ', ' + cityMatches[city].admin1 + ', ' + cityMatches[city].country ,
+          "name": cityAndState + ', ' + cityMatches[city].country,
           "latitude": cityMatches[city].latitude,
           "longitude": cityMatches[city].longitude,
-          "score": 0
+          "score": getSuggestionScore(cityAndState, latitude, longitude, cityMatches[city].lattitude, cityMatches[city].longitude, cityMatches[city].population)
         };
         suggestionsList.suggestions.push(suggestionsObj);
       }
       console.log('**MATCHES**')
       console.log(JSON.stringify(suggestionsList));
-      res.send(suggestionsList)
+      // descending order
+      var sortedList = suggestionsList.suggestions.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
+      console.log('**sortedList**')
+      console.log(sortedList)
+
+      res.send(sortedList)
   }
 }
 
