@@ -6,6 +6,8 @@ cache:
     - "node_modules"
 install:
   - npm install
+  - npm install nyc -g
+
 services:
   - postgresql
 
@@ -20,6 +22,6 @@ before_script:
   - npm run build
   - sequelize db:migrate
 script:
-  - npm test
-after_success:
+  - npm run test
+after_script:
   - npm run coverage

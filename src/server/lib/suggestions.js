@@ -1,4 +1,4 @@
-import {City} from "../models/cities"
+const fetch = require("node-fetch");
 var parseString = require('xml2js').parseString;
 
 const TOTAL_POPULATION = 240097546;
@@ -54,13 +54,17 @@ function calculateDistance(c1_longtitude, c1_latitude, c2_longtitude, c2_latitud
 		return 0;
 	}
 	else {
-            var p = 0.017453292519943295;    // Math.PI / 180
-            var c = Math.cos;
-            var a = 0.5 - c((lat2 - lat1) * p)/2 + 
-                    c(lat1 * p) * c(lat2 * p) * 
-                    (1 - c((lon2 - lon1) * p))/2;
-          
-            return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+        var R = 6371; // Radius of the earth in km
+        var distanceLat = (c2_latitude-c1_latitude) * (Math.PI/180);  
+        var distanceLon = (c2_longtitude-c1_longtitude) * (Math.PI/180); 
+        var a = 
+          Math.sin(distanceLat/2) * Math.sin(distanceLat/2) +
+          Math.cos((c1_latitude) * (Math.PI/180)) * Math.cos((c2_latitude) * (Math.PI/180)) * 
+          Math.sin(distanceLon/2) * Math.sin(distanceLon/2)
+          ; 
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; // Distance in km
+        return d;
 	}
 }
 
@@ -101,3 +105,4 @@ function getGeocodeCertainty(c1_latitude, c1_longtitude){
     
 }
 
+export {getGeocodeCertainty, getPopulationPercentage, calculateDistance, getSuggestionScore}
