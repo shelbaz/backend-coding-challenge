@@ -16,8 +16,8 @@ env:
 before_script:
   - psql -c 'create user root with superuser;'
   - psql -c 'create database cities;' -U postgres
-  - npm run build
   - npm install -g sequelize-cli @babel/core @babel/cli
+  - npm run build
   - sequelize db:migrate
 script:
   - npm test
