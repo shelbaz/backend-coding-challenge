@@ -1,5 +1,6 @@
 import Util from '../lib/utils';
 import CityService from '../services/cityService'
+import {logger} from '../lib/logger'
 
 const util = new Util();
 
@@ -64,23 +65,27 @@ class CityController {
      * @return {Array of {Objects}} matches of cities
     */
     static async getMatches(req, res){
-      let lookupValue = req.body.query.toLowerCase();
+      let lookupValue = req.query.q.toLowerCase();
+      let latitude = req.query.latitude;
+      let longitude = req.query.longitude;
+      logger.log('info', 'city: ' + lookupValue + ' lat: ' + latitude + ' long: ' + longitude);
 
-      City.findAll({
-          attributes: {include: ['name', 'country', 'longitude', 'latitude']},
-          limit: 5,
-          where: {
-              asset_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('asset_name')), 'LIKE', '%' + lookupValue + '%')
-          }
-      }).then(function(assets){
-          return response.json({
-              msg: '** Matches **',
-              assets: assets
-          });
-      }).catch(function(error){
-          logger.log('error', error);
-      });
-    }
+      const cityMatches = await CityService.findACity(lookupValue);
+      let suggestionsList = {};
+      suggestionsList.suggestions = [];
+      for(let city in cityMatches){
+        let suggestionsObj = {
+          "name": cityMatches[city].name,
+          "latitude": cityMatches[city].latitude,
+          "longitude": cityMatches[city].longitude,
+          "score": 0
+        };
+        suggestionsList.suggestions.push(suggestionsObj);
+      }
+      console.log('**MATCHES**')
+      console.log(JSON.stringify(suggestionsList));
+      res.send(suggestionsList)
+  }
 }
 
 /**

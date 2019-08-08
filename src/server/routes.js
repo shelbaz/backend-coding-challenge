@@ -11,18 +11,13 @@ router.get('/', (req, res, next) => res.render('index.ejs', { title: 'Express' }
 // }));
 
 // Suggestions GET endpoint for generating the list of potential matches and their score
-router.get('/suggestions', (req, res) => res.status(200).send(
-  {
-    message: getSuggestionScore(),
-})); 
+router.get('/suggestions', CityController.getMatches); 
 
 // Get all cities in the DB 
 router.get('/cities', CityController.getAll);
 
 router.get('/mycities/', (req, res) => {
-  var city = req.query.city;
-  var lat = req.query.lat;
-  var long = req.query.long;
+  
   
   res.status(200).send({
   

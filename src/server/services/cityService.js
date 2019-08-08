@@ -1,11 +1,13 @@
-var database = require('../models/index');
 var db = require('../models/');
 const City = db.sequelize.import('cities', require('../models/cities'));
+import sequelize from 'sequelize';
+import { logger } from '../lib/logger';
+const Op = sequelize.Op;
+
 
 class CityService {
     static async getAllCities() {
         try {
-            console.log('hit service');
             return await City.findAll();
         } catch (error) {
             throw error;
@@ -22,24 +24,21 @@ class CityService {
 
     static async findACity(lookupValue){
         try {
-            return await City.findAll({
+            let cityMatches = await City.findAll({
                 attributes: {include: ['name', 'country', 'longitude', 'latitude']},
-                limit: 5,
-                where: {
-                    asset_name: sequelize.where(sequelize.fn('LOWER', sequelize.col('asset_name')), 'LIKE', '%' + lookupValue + '%')
-                }
-            }).then(function(assets){
-                return response.json({
-                    msg: '** Matches **',
-                    assets: assets
+                  where: {
+                    name: {
+                      [Op.iLike]: `%${lookupValue}%`
+                    }
+                  }
                 });
-            }).catch(function(error){
-                console.log(error);
-            });
-        } catch (error) {
-            throw error;
-          }
+              
+            logger.log('info', JSON.stringify(cityMatches));
+            return cityMatches;
+    }catch(error){
+        logger.log('info', error);
     }
+}
 }
 
 export default CityService;
