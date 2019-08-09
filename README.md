@@ -1,6 +1,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/shelbaz/backend-coding-challenge/badge.svg)](https://coveralls.io/github/shelbaz/backend-coding-challenge)
 [![Build Status](https://travis-ci.com/shelbaz/backend-coding-challenge.svg?branch=master)](https://travis-ci.com/shelbaz/backend-coding-challenge)
 
+# Documentation 
+https://github.com/shelbaz/backend-coding-challenge/wiki/Coveo-Backend-Coding-Challenge-Design
+
 # Coveo Backend Coding Challenge
 (inspired by https://github.com/busbud/coding-challenge-backend-c)
 
