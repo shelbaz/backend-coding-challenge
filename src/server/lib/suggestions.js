@@ -16,7 +16,7 @@ function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_lo
     let distanceScore = 0;
     let populationScore = getPopulationPercentage(population, TOTAL_POPULATION);
     let similarityScore = sequenceMatcher(query, city);
-    console.log('similarityScore: '+  similarityScore)
+
     if(c1_latitude  && c1_longtitude){
         distanceScore = (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude)*100);
     }else{
@@ -33,19 +33,6 @@ function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_lo
         totalScore = populationScore*(0.5) + similarityScore*(0.5);
     }
     return totalScore; 
-}
-
-/**
- * Generate the suggestions array of objects with their attributes 
- *
- * @param {String} query The partial or full query of a city.
- * @param {Double} c1_latitude The latitude in the search.
- * @param {Double} c1_longitude The longitude in the search.
- * @return {Array of {Objects}} between 0-1 to compute certainty.
- * @return Object attributes : name, lattitude, longitude, score
-*/
-function generateSuggestions(query, c1_latitude, c1_longtitude){
-
 }
 
 /**

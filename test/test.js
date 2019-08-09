@@ -3,7 +3,7 @@ import chatHttp from 'chai-http';
 import 'chai/register-should';
 import app from '../src/app';
 var assert = require('assert');
-import {getGeocodeCertainty, calculateDistance, getPopulationPercentage} from '../src/server/lib/suggestions';
+import {getGeocodeCertainty, calculateDistance, getPopulationPercentage, getSuggestionScore} from '../src/server/lib/suggestions';
 
 
 chai.use(chatHttp);
@@ -43,11 +43,17 @@ it('should calculate the population percentage of total population', function(){
     assert.equal(finalPercentage, populationPercentage);
 });
 
-// /* Test */
-// it('Get the most likely city from the lat long coordinates from API', function(){
-//     let likely_city = 'Washington';
-//     let c1_latitude = 38.898556;
-//     let c1_longitude = -77.037852;
-//     var cityGuess = getGeocodeCertainty(c1_latitude, c1_longitude);
-//     assert.equal(likely_city, cityGuess);
-// });
+/* Test */
+it('Get a score given a query, lat long for potential city', function(){
+    
+    let correctScore = 0.4217;
+    let likely_city = 'London';
+    let c1_latitude = 43.70011;
+    let c1_longitude = -79.4163;
+    let c2_latitude = 42.98339;
+    let c2_longitude = -81.23304;
+
+    var score = getSuggestionScore(likely_city, c1_latitude, c1_longitude, c2_latitude, c2_longitude, 500000, 'Londo');
+
+    assert.equal(score, correctScore);
+});
