@@ -88,5 +88,5 @@ it('Get a score given a query, lat long for potential city', function(){
 
     var score = getSuggestionScore(likely_city, c1_latitude, c1_longitude, c2_latitude, c2_longitude, 500000, 'Londo');
 
-    assert.equal(score, correctScore.toFixed(4));
+    assert.equal(score, correctScore.toFixed(4).toString());
 });
