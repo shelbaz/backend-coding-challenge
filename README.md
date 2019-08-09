@@ -1,4 +1,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/shelbaz/backend-coding-challenge/badge.svg)](https://coveralls.io/github/shelbaz/backend-coding-challenge)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8c2be73bdca56b35ffca/test_coverage)](https://codeclimate.com/github/shelbaz/backend-coding-challenge/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8c2be73bdca56b35ffca/maintainability)](https://codeclimate.com/github/shelbaz/backend-coding-challenge/maintainability)
 [![Build Status](https://travis-ci.com/shelbaz/backend-coding-challenge.svg?branch=master)](https://travis-ci.com/shelbaz/backend-coding-challenge)
 
 # Documentation 
