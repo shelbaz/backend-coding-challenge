@@ -30,7 +30,7 @@ it('should calculate & return distance in km between 2 points', function(){
     let c2_latitude = 38.897147;
     let c2_longitude = -77.043934;
     let finalDistance = 0.549; // km
-    var distance = calculateDistance(c1_longitude, c1_latitude, c2_longitude, c2_latitude);
+    var distance = calculateDistance(c1_latitude, c1_longitude, c2_latitude, c2_longitude);
     assert.equal(Number((distance).toFixed(3)), finalDistance);
 });
 
@@ -39,7 +39,7 @@ it('should calculate the population percentage of total population', function(){
     let TOTAL_POPULATION = 1000000;
     let population = 100000
     let finalPercentage = 0.1; // km
-    var populationPercentage = getPopulationPercentage(population, 'CA', TOTAL_POPULATION);
+    var populationPercentage = getPopulationPercentage(population, TOTAL_POPULATION);
     assert.equal(finalPercentage, populationPercentage);
 });
 
