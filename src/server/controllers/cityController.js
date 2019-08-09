@@ -25,17 +25,6 @@ class CityController {
       }
     }
 
-    /**
-     * Get only specific attributes of all rows.
-     *
-     * @param {Request} req.arr The array of attributes selected 
-     * @param {Response} res Response of server
-     * @return {Array of {Objects}} of all cities
-    */
-    static async getSome(req, res){
-      return await City.findAll({attributes: { include: req.body.arr }}) 
-    }
-
      /**
      * Get all attributes of all rows.
      *
@@ -67,31 +56,37 @@ class CityController {
     */
     static async getMatches(req, res){
       let lookupValue = req.query.q.toLowerCase();
-      let latitude = req.query.latitude;
-      let longitude = req.query.longitude;
-      logger.log('info', 'city: ' + lookupValue + ' lat: ' + latitude + ' long: ' + longitude);
+      let latitude, longitude;
+      
+      if(req.query.latitude && req.query.longitude){
+        latitude = req.query.latitude;
+        longitude = req.query.longitude;
+      }
 
       const cityMatches = await CityService.findACity(lookupValue);
       let suggestionsList = {};
       suggestionsList.suggestions = [];
+
       for(let city in cityMatches){
         let cityAndState = cityMatches[city].name + ', ' + cityMatches[city].admin1;
         let suggestionsObj = {
           "name": cityAndState + ', ' + cityMatches[city].country,
           "latitude": cityMatches[city].latitude,
           "longitude": cityMatches[city].longitude,
-          "score": getSuggestionScore(cityAndState, latitude, longitude, cityMatches[city].lattitude, cityMatches[city].longitude, cityMatches[city].population)
+          "score": getSuggestionScore(cityAndState, latitude, longitude, parseFloat(cityMatches[city].latitude), parseFloat(cityMatches[city].longitude), cityMatches[city].population)
         };
         suggestionsList.suggestions.push(suggestionsObj);
       }
-      console.log('**MATCHES**')
-      console.log(JSON.stringify(suggestionsList));
+
       // descending order
       var sortedList = suggestionsList.suggestions.sort((a, b) => parseFloat(b.score) - parseFloat(a.score));
-      console.log('**sortedList**')
-      console.log(sortedList)
-
-      res.send(sortedList)
+      if (sortedList.length>5){
+        sortedList = sortedList.slice(0, 5);
+      }
+      var finalList = {};
+      finalList.suggestions = [];
+      finalList.suggestions = sortedList
+      res.send(finalList)
   }
 }
 
