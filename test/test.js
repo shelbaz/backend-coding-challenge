@@ -5,22 +5,25 @@ import {calculateDistance, getPopulationPercentage, getSuggestionScore} from '..
 
 describe('Testing the suggestions endpoints:', () => {
     it('It should return a list of matching suggestions', (done) => {
+        let lookupValue = 'Sask';
         let suggestions = {
             "suggestions": [
                 {
                     "name": "Saskatoon, SK, CA",
                     "latitude": 52.11679,
                     "longitude": -106.63452,
-                    "score": 0.13638845371653102
+                    "score": 0.19693390826198554
                 },
                 {
                     "name": "Fort Saskatchewan, AB, CA",
                     "latitude": 53.71684,
                     "longitude": -113.2187,
-                    "score": 0.08641837705744926
+                    "score": 0.12341837705744926
                 }
             ]
         };
+        let latitude=43.70011;
+        let longitude=-79.4163;
         let cityMatches = [];
         cityMatches.push({id: 1,
             name: "Saskatoon",
@@ -60,6 +63,7 @@ describe('Testing the suggestions endpoints:', () => {
         finalList.suggestions = sortedList
        
         assert.deepEqual(finalList, suggestions);
+        done();
     })
 });
 
