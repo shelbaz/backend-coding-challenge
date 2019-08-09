@@ -2,7 +2,7 @@
   "development": {
       "username": "root",
       "port": 5432,
-      "password": null,
+      "password": "admin",
       "database": "cities",
       "host": "127.0.0.1",
       "dialect": "postgres",
@@ -17,7 +17,7 @@
   "test": {
       "username": "root",
       "port": 5432,
-      "password": null,
+      "password": "admin",
       "database": "cities",
       "host": "127.0.0.1",
       "dialect": "postgres"
@@ -25,7 +25,7 @@
   "production": {
       "username": "root",
       "port": 5432,
-      "password": null,
+      "password": "admin",
       "database": "cities",
       "host": "127.0.0.1",
       "dialect": "postgres"
