@@ -13,7 +13,7 @@ import seed from './server/seeders/seed'
 
 const hostname = '127.0.0.1';
 const port = normalizePort(process.env.PORT || 8080);
-const app = express(); // setup express application
+export const app = express(); // setup express application
 const server = http.createServer(app);
 
 app.use(expressWinston.logger(logger)); // log requests to the console

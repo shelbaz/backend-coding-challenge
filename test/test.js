@@ -1,9 +1,9 @@
 import chai from 'chai';
 import chatHttp from 'chai-http';
 import 'chai/register-should';
-import app from '../src/app';
+import {app} from '../src/app';
 var assert = require('assert');
-import {getGeocodeCertainty, calculateDistance, getPopulationPercentage, getSuggestionScore} from '../src/server/lib/suggestions';
+import {calculateDistance, getPopulationPercentage, getSuggestionScore} from '../src/server/lib/suggestions';
 
 
 chai.use(chatHttp);
@@ -88,5 +88,5 @@ it('Get a score given a query, lat long for potential city', function(){
 
     var score = getSuggestionScore(likely_city, c1_latitude, c1_longitude, c2_latitude, c2_longitude, 500000, 'Londo');
 
-    assert.equal(score, correctScore);
+    assert.equal(score, correctScore.toFixed(4));
 });
