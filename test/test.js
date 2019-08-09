@@ -4,7 +4,7 @@ import 'chai/register-should';
 import {app} from '../src/app';
 var assert = require('assert');
 import {calculateDistance, getPopulationPercentage, getSuggestionScore} from '../src/server/lib/suggestions';
-
+var expect = chai.expect;
 
 chai.use(chatHttp);
 
@@ -79,7 +79,7 @@ it('should calculate the population percentage of total population', function(){
 /* Test */
 it('Get a score given a query, lat long for potential city', function(){
     
-    let correctScore = 0.4959;
+    let correctScore = 0.4959325032539845;
     let likely_city = 'London';
     let c1_latitude = 43.70011;
     let c1_longitude = -79.4163;
@@ -88,5 +88,5 @@ it('Get a score given a query, lat long for potential city', function(){
 
     var score = getSuggestionScore(likely_city, c1_latitude, c1_longitude, c2_latitude, c2_longitude, 500000, 'Londo');
 
-    assert.equal(score, correctScore.toFixed(4).toString());
+    assert.equal(score, correctScore);
 });
