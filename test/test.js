@@ -8,20 +8,53 @@ import {getGeocodeCertainty, calculateDistance, getPopulationPercentage, getSugg
 
 chai.use(chatHttp);
 
-// describe('Testing the suggestions endpoints:', () => {
-//     it('It should return a list of matching suggestions', (done) => {
-//       const url = '?q=Londo&latitude=43.70011&longitude=-79.4163'
-//       chai.request(app)
-//         .get('/suggestions/' + url)
-//         .end((err, res) => {
-//           expect(res.status).to.equal(201);
-//           expect(res.body.data).to.include({
-//             // expected response arr of objs : TODO
-//           });
-//           done();
-//         });
-//     })
-// });
+describe('Testing the suggestions endpoints:', () => {
+    it('It should return a list of matching suggestions', (done) => {
+      const url = '?q=Londo&latitude=43.70011&longitude=-79.4163'
+      chai.request(app)
+        .get('/suggestions/' + url)
+        .end((err, res) => {
+          expect(res.status).to.equal(201);
+          expect(res.body.data).to.include({
+            
+                "suggestions": [
+                    {
+                        "name": "London, ON, CA",
+                        "latitude": 42.98339,
+                        "longitude": -81.23304,
+                        "score": 0.4217199760713868
+                    },
+                    {
+                        "name": "London, OH, US",
+                        "latitude": 39.88645,
+                        "longitude": -83.44825,
+                        "score": 0.283702296272092
+                    },
+                    {
+                        "name": "London, KY, US",
+                        "latitude": 37.12898,
+                        "longitude": -84.08326,
+                        "score": 0.26211646432439983
+                    },
+                    {
+                        "name": "New London, CT, US",
+                        "latitude": 41.35565,
+                        "longitude": -72.09952,
+                        "score": 0.21749554087608675
+                    },
+                    {
+                        "name": "New London, WI, US",
+                        "latitude": 44.39276,
+                        "longitude": -88.73983,
+                        "score": 0.21098522791906896
+                    }
+                ]
+            
+          });
+          done();
+        });
+    })
+});
 
 /* Test */
 it('should calculate & return distance in km between 2 points', function(){
@@ -46,7 +79,7 @@ it('should calculate the population percentage of total population', function(){
 /* Test */
 it('Get a score given a query, lat long for potential city', function(){
     
-    let correctScore = 0.4217;
+    let correctScore = 0.4959;
     let likely_city = 'London';
     let c1_latitude = 43.70011;
     let c1_longitude = -79.4163;
