@@ -1,6 +1,5 @@
 import Util from '../lib/utils';
 import CityService from '../services/cityService';
-import {logger} from '../lib/logger';
 import {getSuggestionScore} from '../lib/suggestions';
 
 const util = new Util();
@@ -68,12 +67,12 @@ class CityController {
       suggestionsList.suggestions = [];
 
       for(let city in cityMatches){
-        let cityAndState = cityMatches[city].name + ', ' + cityMatches[city].admin1;
+        let cityStateCountry = cityMatches[city].name + ', ' + cityMatches[city].admin1 + ', ' + cityMatches[city].country;
         let suggestionsObj = {
-          "name": cityAndState + ', ' + cityMatches[city].country,
+          "name": cityStateCountry ,
           "latitude": cityMatches[city].latitude,
           "longitude": cityMatches[city].longitude,
-          "score": getSuggestionScore(cityAndState, latitude, longitude, parseFloat(cityMatches[city].latitude), parseFloat(cityMatches[city].longitude), cityMatches[city].population)
+          "score": getSuggestionScore(cityMatches[city].name, latitude, longitude, parseFloat(cityMatches[city].latitude), parseFloat(cityMatches[city].longitude), cityMatches[city].population, lookupValue)
         };
         suggestionsList.suggestions.push(suggestionsObj);
       }

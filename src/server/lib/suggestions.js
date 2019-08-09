@@ -1,4 +1,5 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var stringSimilarity = require('string-similarity');
 const TOTAL_POPULATION = 240097546;
 
 /**
@@ -11,10 +12,11 @@ const TOTAL_POPULATION = 240097546;
  * @param {Double} c2_longitude The The longitude of the potential match.
  * @return {Integer}totalScore between 0-1 to compute certainty.
 */
-function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population){
+function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_longtitude, population, query){
     let distanceScore = 0;
     let populationScore = getPopulationPercentage(population, TOTAL_POPULATION);
-
+    let similarityScore = sequenceMatcher(query, city);
+    console.log('similarityScore: '+  similarityScore)
     if(c1_latitude  && c1_longtitude){
         distanceScore = (1.0 / calculateDistance(c1_latitude, c1_longtitude, c2_latitude, c2_longtitude)*100);
     }else{
@@ -23,8 +25,13 @@ function getSuggestionScore(city, c1_latitude, c1_longtitude, c2_latitude, c2_lo
             populationScore =1;
         }
     }    
-
-    let totalScore = distanceScore*(0.5) + populationScore;
+    let totalScore;
+    if(c1_latitude  && c1_longtitude){
+        totalScore = distanceScore*(0.333) + populationScore*(0.333) + similarityScore*(0.333);
+    }
+    else{
+        totalScore = populationScore*(0.5) + similarityScore*(0.5);
+    }
     return totalScore; 
 }
 
@@ -83,6 +90,11 @@ function getPopulationPercentage(population, TOTAL_POPULATION){
         if (population){
                 return (population/TOTAL_POPULATION);
             }
+}
+
+function sequenceMatcher(query, potentialMatch){
+    var similarity = stringSimilarity.compareTwoStrings(query, potentialMatch); 
+    return similarity;
 }
 
 /**
